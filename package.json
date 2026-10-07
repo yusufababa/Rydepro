@@ -1,0 +1,7 @@
+{
+  "name": "rydepro",
+  "version": "1.0.0",
+  "private": true,
+  "description": "RYDEPRO premium mobility landing and waitlist experience",
+  "scripts": { "dev": "node scripts/server.mjs", "start": "node scripts/server.mjs", "check": "node --check src/main.js", "build": "npm run check && node scripts/build.mjs" }
+}

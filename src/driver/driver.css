@@ -1,0 +1,375 @@
+/* Driver application: the landing page's white, black, and gold design system. */
+.driver-page {
+  --driver-text: 16px;
+  --driver-small: 14px;
+  --driver-caption: 12px;
+  --driver-control: 14px;
+  --driver-input: #fafaf7;
+  --driver-input-stroke: #dedfd6;
+  background: #fff;
+  font-size: var(--driver-text);
+  line-height: 1.65;
+}
+.driver-page .driver-main { max-width: 1100px; padding: 56px 32px 78px; margin: 0 auto; }
+.driver-page .driver-main > section { min-width: 0; }
+.driver-page .driver-welcome {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  overflow: hidden;
+  min-height: 585px;
+}
+.driver-page .driver-welcome-story { padding: 55px 44px; background: var(--gold-soft); }
+.driver-page .driver-welcome-story h1 { font-size: clamp(35px, 3.8vw, 49px); line-height: 1.14; letter-spacing: -.045em; font-weight: 700; margin: 19px 0 22px; }
+.driver-page .driver-welcome-story h1 span { color: var(--gold-dark); }
+.driver-page .driver-welcome-story > p { color: var(--muted); font-size: var(--driver-text); line-height: 1.7; max-width: 440px; }
+.driver-page .driver-welcome-principles { margin-top: 32px; border-top: 1px solid #e5d9c2; }
+.driver-page .driver-welcome-principles > div { padding: 17px 0; border-bottom: 1px solid #e5d9c2; }
+.driver-page .driver-welcome-principles strong { display: block; font-size: var(--driver-small); font-weight: 700; }
+.driver-page .driver-welcome-principles span { display: block; margin-top: 5px; font-size: var(--driver-small); color: var(--muted); }
+.driver-page .driver-welcome-panel { padding: 54px 40px; display: flex; flex-direction: column; justify-content: center; background: #fff; }
+.driver-page .driver-welcome-panel h2 { font-size: 35px; font-weight: 500; letter-spacing: -.04em; line-height: 1.15; margin: 17px 0; }
+.driver-page .driver-welcome-panel > p { font-size: var(--driver-text); color: var(--muted); margin-bottom: 23px; line-height: 1.7; }
+.driver-page .driver-welcome-panel > .button { align-self: flex-start; }
+.driver-page .driver-welcome-panel .driver-welcome-legal { font-size: var(--driver-caption); line-height: 1.7; margin: 24px 0 14px; }
+.driver-page .driver-welcome-legal a { text-decoration: underline; text-underline-offset: 3px; color: var(--ink); }
+.driver-page .driver-welcome-panel .driver-preview-note { font-size: var(--driver-caption); margin: 0; }
+.driver-page .driver-resume-card { padding: 20px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+.driver-page .driver-resume-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+.driver-page .driver-resume-card > p { color: var(--muted); font-size: var(--driver-small); }
+.driver-page .driver-resume-card .button { margin-top: 15px; }
+.driver-page .driver-resume-card .button + .button { margin-left: 5px; }
+.driver-page .driver-resume-track { height: 3px; background: var(--line); margin: 17px 0 8px; border-radius: 99px; overflow: hidden; }
+.driver-page .driver-resume-track > span { display: block; height: 100%; background: var(--gold); }
+
+/* Progress stays in the page flow so the shared header remains the sole sticky bar. */
+.driver-page .driver-progress { max-width: 900px; margin: 0 auto 24px; }
+.driver-page .driver-progress-top { display: flex; align-items: center; justify-content: space-between; gap: 18px; font-size: var(--driver-small); margin-bottom: 12px; }
+.driver-page .driver-progress-top strong { font-weight: 700; }
+.driver-page .driver-progress-top span { color: var(--muted); }
+.driver-page .driver-progress-track { height: 3px; background: var(--line); border-radius: 99px; overflow: hidden; }
+.driver-page .driver-progress-track > span { height: 100%; display: block; background: var(--gold); transition: width .3s ease; }
+.driver-page .driver-milestones { display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
+.driver-page .driver-milestones button { display: inline-flex; align-items: center; gap: 6px; padding: 0 15px; border: 1px solid var(--line); background: #fff; color: var(--muted); }
+.driver-page .driver-milestones button[data-state="current"] { background: var(--ink); color: #fff; border-color: var(--ink); }
+.driver-page .driver-milestones button[data-state="complete"] { background: var(--gold-soft); color: var(--gold-dark); border-color: #d9c6a2; }
+.driver-page .driver-milestones button:hover { background: var(--gold); color: var(--ink); border-color: var(--gold); }
+.driver-page .driver-progress-details { margin-top: 15px; border: 1px solid var(--line); border-radius: 12px; background: #fff; }
+.driver-page .driver-progress-details > summary { display: flex; align-items: center; justify-content: space-between; gap: 12px; cursor: pointer; font-size: var(--driver-small); font-weight: 500; padding: 11px 15px; list-style: none; }
+.driver-page .driver-progress-details > summary::-webkit-details-marker { display: none; }
+.driver-page .driver-progress-details > summary::after { content: 'Show'; font-size: var(--driver-caption); font-weight: 400; color: var(--gold-dark); }
+.driver-page .driver-progress-details[open] > summary::after { content: 'Hide'; }
+.driver-page .driver-progress-details > summary:focus-visible { outline: 2px solid var(--gold-dark); outline-offset: 3px; border-radius: 10px; }
+.driver-page .driver-step-list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; padding: 3px 15px 15px; }
+.driver-page .driver-step-list button { display: block; flex: none; width: 100%; min-width: 0; overflow: hidden; text-overflow: ellipsis; text-align: left; border: 1px solid var(--line); background: #fff; color: var(--muted); padding-inline: 13px; white-space: nowrap; font-size: var(--driver-control); }
+.driver-page .driver-step-list button[aria-current="step"], .driver-page .driver-step-list button.is-current { background: var(--ink); color: #fff; border-color: var(--ink); }
+.driver-page .driver-step-list button.is-complete { border-color: #d9c6a2; background: var(--gold-soft); color: var(--gold-dark); }
+.driver-page .driver-step-list button:hover { background: var(--gold); color: var(--ink); border-color: var(--gold); }
+.driver-page .driver-step-list button:disabled { cursor: default; opacity: .5; }
+.driver-page .step-state { margin-right: 6px; }
+
+.driver-page .driver-application-card { max-width: 900px; margin: 0 auto; background: #fff; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+.driver-page #driver-screen { padding: 38px; }
+.driver-page .driver-screen-header { margin-bottom: 30px; }
+.driver-page .driver-screen-header h1 { margin: 13px 0 14px; font-size: clamp(29px, 3vw, 38px); font-weight: 500; letter-spacing: -.04em; line-height: 1.15; }
+.driver-page .driver-screen-header > p { font-size: var(--driver-text); line-height: 1.7; color: var(--muted); max-width: 710px; }
+.driver-page .eyebrow { font-size: 11px; line-height: 1.6; letter-spacing: .14em; }
+.driver-page .driver-fields { display: grid; gap: 21px; }
+.driver-page .driver-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 19px 20px; }
+.driver-page .driver-field { margin: 0; min-width: 0; }
+.driver-page .driver-field-full { grid-column: 1 / -1; }
+.driver-page .driver-field > label { display: block; font-size: var(--driver-small); font-weight: 500; line-height: 1.5; margin: 0 0 7px; }
+.driver-page .driver-required { color: var(--gold-dark); margin-left: 5px; }
+.driver-page .driver-optional { float: right; margin-left: 8px; font-size: var(--driver-caption); color: var(--muted); font-weight: 400; }
+.driver-page input:not([type="checkbox"]):not([type="radio"]), .driver-page select {
+  height: 36px;
+  min-height: 36px;
+  max-height: 36px;
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 0 15px;
+  background: var(--driver-input);
+  border: 1px solid var(--driver-input-stroke);
+  border-radius: 999px;
+  font-size: var(--driver-text);
+  color: var(--ink);
+  line-height: 1.4;
+  outline: none;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.driver-page input::placeholder { color: #989c96; }
+.driver-page input:not([type="checkbox"]):not([type="radio"]):hover, .driver-page select:hover { border-color: #c5c8bf; }
+.driver-page input:not([type="checkbox"]):not([type="radio"]):focus, .driver-page select:focus { border-color: var(--gold); box-shadow: 0 0 0 3px #c5a05918; }
+.driver-page input[aria-invalid="true"], .driver-page select[aria-invalid="true"] { border-color: #b84739; }
+.driver-page select { padding-right: 32px; }
+.driver-page .driver-helper { margin: 7px 0 0; font-size: var(--driver-caption); line-height: 1.6; color: var(--muted); }
+.driver-page .driver-error { margin: 7px 0 0; font-size: var(--driver-caption); line-height: 1.6; color: #a23c31; }
+.driver-page .driver-password-field { position: relative; }
+.driver-page .driver-password-field input { padding-right: 70px; }
+.driver-page button.driver-password-toggle { position: absolute; right: 0; top: 0; width: 61px; padding: 0 9px; border: 0; background: transparent; color: var(--muted); font-size: var(--driver-caption); font-weight: 500; }
+.driver-page button.driver-password-toggle:hover { color: var(--gold-dark); background: #c5a0590b; }
+.driver-page .driver-input-prefix { position: relative; }
+.driver-page .driver-input-prefix > span { position: absolute; left: 15px; top: 7px; font-size: var(--driver-text); color: var(--muted); pointer-events: none; line-height: 22px; }
+.driver-page .driver-input-prefix input { padding-left: 41px; }
+.driver-page .driver-password-requirements { border: 1px solid var(--line); border-radius: 12px; padding: 20px; background: var(--surface); }
+.driver-page .driver-password-requirements h2 { font-size: var(--driver-small); font-weight: 700; letter-spacing: 0; margin: 0 0 13px; }
+.driver-page .driver-password-requirements ul { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 16px; }
+.driver-page .driver-password-requirements li { display: flex; gap: 10px; align-items: center; font-size: var(--driver-small); line-height: 1.6; color: var(--muted); }
+.driver-page .driver-password-requirements li.is-met { color: var(--gold-dark); }
+.driver-page .driver-requirement-state { width: 14px; text-align: center; flex: none; }
+.driver-page .driver-note { padding: 17px 20px; margin-top: 23px; background: var(--gold-soft); border: 1px solid #e6d8bc; border-radius: 12px; }
+.driver-page .driver-note strong { display: block; font-size: var(--driver-small); font-weight: 700; margin-bottom: 5px; }
+.driver-page .driver-note p { font-size: var(--driver-small); line-height: 1.65; color: var(--muted); }
+.driver-page .driver-email-card { max-width: 520px; }
+.driver-page .driver-email-card input { letter-spacing: .15em; }
+.driver-page .driver-email-card input::placeholder { letter-spacing: 0; }
+.driver-page .driver-inline-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+.driver-page .driver-inline-actions .driver-helper { margin: 0; }
+.driver-page .driver-capture-saved { color: var(--gold-dark); font-size: var(--driver-small); margin-top: 14px; line-height: 1.6; }
+
+/* Native choices remain keyboard-accessible; the whole label is the click target. */
+.driver-page .driver-radio-group, .driver-page .driver-role-fieldset { padding: 0; margin: 0; border: 0; min-width: 0; }
+.driver-page .driver-radio-group > legend { border: 0; margin: 0 0 10px; padding: 0; width: 100%; font-size: var(--driver-small); font-weight: 500; line-height: 1.6; }
+.driver-page .driver-choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.driver-page .driver-choices-three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.driver-page .driver-choices-single { grid-template-columns: 1fr; }
+.driver-page .driver-choice { display: flex; align-items: center; gap: 11px; margin: 0; padding: 13px 15px; font-size: var(--driver-small); line-height: 1.5; font-weight: 400; color: var(--ink); background: #fff; border: 1px solid var(--line); border-radius: 12px; cursor: pointer; transition: background .2s ease, border-color .2s ease; }
+.driver-page input[type="radio"], .driver-page input[type="checkbox"] { display: inline-block; width: 16px; height: 16px; min-width: 16px; min-height: 16px; max-height: 16px; margin: 0; padding: 0; flex: none; accent-color: var(--gold-dark); border-radius: 0; }
+.driver-page .driver-choice.is-selected, .driver-page .driver-choice:has(input:checked), .driver-page .driver-role-card.is-selected, .driver-page .driver-role-card:has(input:checked) { background: var(--gold-soft); border-color: var(--gold); }
+.driver-page .driver-choice:hover, .driver-page .driver-role-card:hover { background: var(--gold-soft); border-color: var(--gold); }
+.driver-page .driver-choice:focus-within, .driver-page .driver-role-card:focus-within { outline: 2px solid var(--gold-dark); outline-offset: 3px; }
+.driver-page input[type="radio"]:focus-visible, .driver-page input[type="checkbox"]:focus-visible { outline: none; box-shadow: none; }
+.driver-page .driver-role-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.driver-page .driver-role-card { display: flex; align-items: flex-start; gap: 13px; padding: 24px; margin: 0; background: #fff; border: 1px solid var(--line); border-radius: 12px; cursor: pointer; transition: border-color .2s ease, background .2s ease; }
+.driver-page .driver-role-card input { margin-top: 5px; }
+.driver-page .driver-role-card > span { min-width: 0; }
+.driver-page .driver-role-card strong { display: block; font-size: 19px; line-height: 1.35; font-weight: 500; letter-spacing: -.02em; }
+.driver-page .driver-role-card > span > span { display: block; margin-top: 10px; color: var(--muted); font-size: var(--driver-small); line-height: 1.7; font-weight: 400; }
+.driver-page .driver-certification { margin-top: 22px; }
+.driver-page .driver-certification .driver-choice { align-items: flex-start; padding: 22px; }
+.driver-page .driver-certification input { margin-top: 3px; }
+.driver-page .driver-certification strong { display: block; font-weight: 700; margin-bottom: 8px; }
+.driver-page .driver-certification label > span > span { display: block; color: var(--muted); font-size: var(--driver-small); line-height: 1.7; }
+
+/* The capture area pairs a clear frame with focused, useful guidance. */
+.driver-page .driver-capture-layout { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: 26px; }
+.driver-page .driver-camera { position: relative; isolation: isolate; aspect-ratio: 8 / 5; display: grid; align-items: center; overflow: hidden; background: var(--surface); border: 1px solid var(--line); border-radius: 13px; }
+.driver-page .driver-camera.is-portrait { aspect-ratio: 4 / 5; max-height: 440px; }
+.driver-page .driver-camera video { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
+.driver-page .driver-camera-guide { position: absolute; inset: 15% 9%; border: 1px solid #b99555; border-radius: 15px; box-shadow: 0 0 0 80px #ffffff1a; pointer-events: none; }
+.driver-page .driver-camera.is-portrait .driver-camera-guide { inset: 16% 22% 18%; border-radius: 50%; }
+.driver-page .driver-camera-placeholder { padding: 18px; margin-top: 5%; text-align: center; position: relative; z-index: 1; }
+.driver-page .driver-camera-placeholder > span { display: block; font-size: 17px; font-weight: 500; letter-spacing: -.02em; }
+.driver-page .driver-camera-placeholder p { margin: 9px auto 0; font-size: var(--driver-caption); color: var(--muted); max-width: 270px; line-height: 1.6; }
+.driver-page .driver-camera-placeholder.is-live { align-self: end; margin-top: 0; background: #0b0d1370; color: #fff; }
+.driver-page .driver-camera-placeholder.is-live > span { display: none; }
+.driver-page .driver-camera-placeholder.is-live p { color: #fff; margin: 0 auto; }
+.driver-page .driver-capture-preview { display: block; width: 100%; height: 100%; object-fit: contain; position: absolute; inset: 0; }
+.driver-page .driver-capture-actions { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 14px; }
+.driver-page .driver-capture-guidance { padding: 6px 0; }
+.driver-page .driver-capture-guidance h2 { font-size: 26px; font-weight: 500; line-height: 1.2; letter-spacing: -.035em; margin: 15px 0 20px; }
+.driver-page .driver-capture-guidance ul { margin: 0; padding: 0; list-style: none; }
+.driver-page .driver-capture-guidance li { font-size: var(--driver-small); line-height: 1.7; color: var(--muted); padding: 12px 0; border-top: 1px solid var(--line); }
+.driver-page .driver-capture-guidance .driver-helper { margin-top: 16px; }
+
+/* Repeating vehicles and associations share the same connected stroke language. */
+.driver-page .driver-repeat-list { display: grid; gap: 18px; }
+.driver-page .driver-repeat-card { border: 1px solid var(--line); padding: 0; margin: 0; border-radius: 12px; overflow: hidden; min-width: 0; }
+.driver-page .driver-repeat-header { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 21px 23px; background: var(--surface); border-bottom: 1px solid var(--line); }
+.driver-page .driver-repeat-header h2 { font-size: 23px; font-weight: 500; line-height: 1.2; letter-spacing: -.035em; margin-top: 8px; overflow-wrap: anywhere; }
+.driver-page .driver-repeat-header p { font-size: var(--driver-caption); line-height: 1.6; margin-top: 7px; color: var(--muted); }
+.driver-page .driver-repeat-actions { display: flex; gap: 8px; flex: none; }
+.driver-page .driver-repeat-card > .driver-fields { padding: 23px; }
+.driver-page .driver-subsection { border-top: 1px solid var(--line); padding-top: 21px; display: grid; gap: 19px; }
+.driver-page .driver-subsection h2, .driver-page .driver-subsection h3 { font-size: 21px; font-weight: 500; letter-spacing: -.025em; line-height: 1.25; }
+.driver-page .driver-empty-state { padding: 37px 25px; text-align: center; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+.driver-page .driver-empty-state h2 { font-size: 25px; letter-spacing: -.035em; font-weight: 500; }
+.driver-page .driver-empty-state p { color: var(--muted); font-size: var(--driver-text); max-width: 450px; margin: 12px auto 0; line-height: 1.7; }
+.driver-page .driver-add-action { margin-top: 18px; }
+
+/* Review all submitted fields without exposing passwords. */
+.driver-page .driver-summary-list { display: grid; gap: 18px; }
+.driver-page .driver-summary-card { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: #fff; }
+.driver-page .driver-summary-header { display: flex; justify-content: space-between; align-items: center; gap: 15px; border-bottom: 1px solid var(--line); padding: 15px 21px; background: var(--surface); }
+.driver-page .driver-summary-header h2 { font-size: 21px; font-weight: 500; letter-spacing: -.03em; line-height: 1.3; overflow-wrap: anywhere; }
+.driver-page .driver-summary-header .button { flex: none; }
+.driver-page .driver-summary-rows { margin: 0; padding: 4px 21px; }
+.driver-page .driver-summary-rows > div { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 22px; padding: 13px 0; border-bottom: 1px solid var(--line); font-size: var(--driver-small); line-height: 1.6; }
+.driver-page .driver-summary-rows > div:last-child { border-bottom: 0; }
+.driver-page .driver-summary-rows dt { color: var(--muted); }
+.driver-page .driver-summary-rows dd { margin: 0; color: var(--ink); overflow-wrap: anywhere; }
+.driver-page .driver-summary-rows dd.is-empty { color: #8b9097; }
+.driver-page .driver-document-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; padding: 21px; }
+.driver-page .driver-document-card { min-width: 0; }
+.driver-page .driver-document-card > img, .driver-page .driver-document-placeholder { display: block; width: 100%; aspect-ratio: 8 / 5; object-fit: contain; background: var(--surface); border: 1px solid var(--line); border-radius: 9px; }
+.driver-page .driver-document-placeholder { display: grid; place-items: center; color: var(--muted); padding: 15px; font-size: var(--driver-caption); }
+.driver-page .driver-document-card h3 { font-size: var(--driver-small); font-weight: 500; line-height: 1.6; letter-spacing: 0; margin: 10px 0; }
+.driver-page .driver-document-card .button { font-size: var(--driver-caption); padding-inline: 13px; }
+.driver-page .driver-received-status { border: 1px solid #ddcaa6; background: var(--gold-soft); padding: 21px; border-radius: 12px; }
+.driver-page .driver-received-status > span { font-size: 11px; font-weight: 700; color: var(--gold-dark); letter-spacing: .14em; }
+.driver-page .driver-received-status p { color: var(--muted); font-size: var(--driver-small); margin-top: 6px; }
+.driver-page .driver-next-stages { margin-top: 28px; }
+.driver-page .driver-next-stages h2 { font-size: 25px; font-weight: 500; line-height: 1.3; letter-spacing: -.035em; margin-bottom: 19px; }
+.driver-page .driver-next-stages ol { list-style: none; margin: 0; padding: 0; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.driver-page .driver-next-stages li { padding: 17px 21px; border-top: 1px solid var(--line); transition: background .2s ease; }
+.driver-page .driver-next-stages li:first-child { border-top: 0; }
+.driver-page .driver-next-stages li:hover { background: var(--gold-soft); }
+.driver-page .driver-next-stages strong { font-size: var(--driver-small); font-weight: 700; }
+.driver-page .driver-next-stages p { font-size: var(--driver-small); color: var(--muted); margin-top: 5px; line-height: 1.65; }
+.driver-page .driver-received-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 23px; }
+
+/* Focused navigation remains attached to the application card, in normal flow. */
+.driver-page .driver-actionsbar { display: flex; justify-content: space-between; align-items: center; gap: 15px; padding: 20px 38px; border-top: 1px solid var(--line); background: var(--surface); }
+.driver-page .driver-actionsbar > div { display: flex; gap: 10px; align-items: center; }
+.driver-page .driver-actionsbar .driver-save-status { font-size: var(--driver-caption); color: var(--muted); }
+.driver-page .button, .driver-page button { height: 36px; min-height: 36px; max-height: 36px; border-radius: 999px; font-size: var(--driver-control); line-height: 1; }
+.driver-page .button { padding: 0 16px; white-space: nowrap; }
+.driver-page .button:hover, .driver-page .button:active { background: var(--gold); color: var(--ink); border-color: var(--gold); }
+.driver-page button:disabled { cursor: not-allowed; opacity: .45; }
+.driver-page button:disabled:hover { background: var(--surface); color: var(--muted); border-color: var(--line); }
+.driver-page button:focus-visible, .driver-page a:focus-visible { outline: 2px solid var(--gold-dark); outline-offset: 4px; }
+.driver-page .driver-status-message { padding: 13px 18px; border: 1px solid #e6d8bc; border-radius: 12px; background: var(--gold-soft); color: var(--ink); font-size: var(--driver-small); line-height: 1.65; margin: 0 auto 18px; max-width: 900px; }
+
+/* Preview context and validation fit the same quiet, focused application frame. */
+.driver-page .driver-main > .driver-preview-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  max-width: 900px;
+  padding: 13px 18px;
+  margin: 0 auto 25px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+}
+.driver-page .driver-main > .driver-preview-note > .eyebrow { flex: none; padding-top: 2px; }
+.driver-page .driver-main > .driver-preview-note > p { color: var(--muted); font-size: var(--driver-caption); line-height: 1.65; margin: 0; }
+.driver-page .driver-error-summary { padding: 17px 20px; margin: 28px 38px 0; border: 1px solid #ddcba8; border-radius: 12px; background: var(--gold-soft); font-size: var(--driver-small); line-height: 1.65; }
+.driver-page .driver-error-summary h2, .driver-page .driver-error-summary h3 { font-size: 18px; font-weight: 700; letter-spacing: -.02em; line-height: 1.3; margin: 0 0 8px; }
+.driver-page .driver-error-summary > p { margin: 0; color: var(--muted); font-size: var(--driver-small); line-height: 1.65; }
+.driver-page .driver-error-summary ul { margin: 10px 0 0; padding-left: 19px; }
+.driver-page .driver-error-summary li { padding: 3px 0; font-size: var(--driver-small); line-height: 1.65; }
+.driver-page .driver-error-summary a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; overflow-wrap: anywhere; }
+.driver-page .driver-error-summary a:hover { color: var(--gold-dark); }
+.driver-page .driver-error-summary:focus { outline: 2px solid var(--gold-dark); outline-offset: 4px; }
+.driver-page .driver-save-state { display: inline-flex; align-items: center; gap: 7px; max-width: 320px; color: var(--muted); font-size: var(--driver-caption); line-height: 1.6; overflow-wrap: anywhere; }
+.driver-page .driver-save-state[data-state="saved"] { color: var(--gold-dark); }
+.driver-page .driver-save-state[data-state="error"] { color: #a23c31; }
+.driver-page .driver-status { padding: 13px 18px; border: 1px solid #e6d8bc; border-radius: 12px; background: var(--gold-soft); color: var(--ink); font-size: var(--driver-small); line-height: 1.65; margin: 20px auto 0; max-width: 900px; }
+.driver-page .driver-status:empty, .driver-page .driver-status-message:empty { display: none; }
+
+/* Confirmation dialogs share the same compact actions as the waitlist. */
+.driver-page #driver-dialog { width: min(480px, calc(100% - 32px)); border: 1px solid var(--line); border-radius: 16px; background: #fff; color: var(--ink); }
+.driver-page #driver-dialog .confirmation-content { padding: 29px; text-align: left; }
+.driver-page #driver-dialog .confirmation-content h2 { font-size: 28px; font-weight: 500; letter-spacing: -.035em; line-height: 1.2; margin-top: 15px; }
+.driver-page #driver-dialog .confirmation-content > p { font-size: var(--driver-text); color: var(--muted); line-height: 1.7; margin: 16px 0 0; }
+.driver-page #driver-dialog .driver-dialog-actions { display: flex; justify-content: flex-end; align-items: center; flex-wrap: wrap; gap: 9px; margin-top: 24px; }
+.driver-page #driver-dialog .driver-dialog-actions .button { width: auto; flex: none; height: 36px; min-height: 36px; max-height: 36px; border-radius: 999px; padding-inline: 16px; font-size: var(--driver-control); }
+.driver-page #driver-dialog .driver-dialog-actions .button-outline { background: #fff; color: var(--ink); border-color: var(--line); }
+.driver-page #driver-dialog .driver-dialog-actions .button-dark { background: var(--ink); color: #fff; border-color: var(--ink); }
+.driver-page #driver-dialog .driver-dialog-actions .button:hover, .driver-page #driver-dialog .driver-dialog-actions .button:active { background: var(--gold); color: var(--ink); border-color: var(--gold); }
+
+@media (max-width: 960px) {
+  .driver-page .driver-main { padding: 40px 25px 60px; }
+  .driver-page .driver-welcome-story { padding: 38px 30px; }
+  .driver-page .driver-welcome-panel { padding: 38px 30px; }
+  .driver-page .driver-welcome-story h1 { font-size: 39px; }
+  .driver-page .driver-welcome-panel h2 { font-size: 31px; }
+  .driver-page .driver-capture-layout { grid-template-columns: minmax(0, 1fr) minmax(0, .8fr); gap: 21px; }
+}
+@media (max-width: 700px) {
+  .driver-page { --driver-text: 12px; --driver-small: 12px; --driver-caption: 10px; --driver-control: 12px; }
+  .driver-page .driver-main { padding: 28px 6% 45px; }
+  .driver-page .driver-welcome { grid-template-columns: minmax(0, 1fr); border-radius: 15px; min-height: 0; }
+  .driver-page .driver-welcome-story { padding: 30px 24px; }
+  .driver-page .driver-welcome-story h1 { font-size: 35px; margin: 15px 0 18px; }
+  .driver-page .driver-welcome-panel { padding: 30px 24px; }
+  .driver-page .driver-welcome-panel h2 { font-size: 30px; }
+  .driver-page .driver-welcome-principles { margin-top: 25px; }
+  .driver-page .eyebrow { font-size: 10px; }
+  .driver-page .driver-progress-top { gap: 10px; }
+  .driver-page .driver-step-list { padding-top: 12px; }
+  .driver-page .driver-milestones { gap: 7px; }
+  .driver-page .driver-milestones button { padding-inline: 11px; }
+  .driver-page .driver-step-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .driver-page #driver-screen { padding: 26px 23px; }
+  .driver-page .driver-screen-header { margin-bottom: 25px; }
+  .driver-page .driver-screen-header h1 { font-size: 29px; margin: 12px 0; }
+  .driver-page .driver-grid { grid-template-columns: minmax(0, 1fr); gap: 17px; }
+  .driver-page .driver-fields { gap: 19px; }
+  .driver-page .driver-password-requirements { padding: 17px; }
+  .driver-page .driver-password-requirements ul { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+  .driver-page .driver-role-grid { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .driver-page .driver-role-card { padding: 21px 18px; }
+  .driver-page .driver-role-card strong { font-size: 18px; }
+  .driver-page .driver-role-card > span > span { margin-top: 7px; }
+  .driver-page .driver-note { padding: 15px 17px; margin-top: 20px; }
+  .driver-page .driver-capture-layout { grid-template-columns: minmax(0, 1fr); gap: 22px; }
+  .driver-page .driver-camera.is-portrait { max-width: 340px; width: 100%; justify-self: center; }
+  .driver-page .driver-camera-placeholder > span { font-size: 15px; }
+  .driver-page .driver-capture-guidance h2 { font-size: 24px; margin: 13px 0 16px; }
+  .driver-page .driver-capture-guidance { padding: 0; }
+  .driver-page .driver-repeat-header { align-items: flex-start; flex-direction: column; padding: 19px; gap: 13px; }
+  .driver-page .driver-repeat-header h2 { font-size: 22px; }
+  .driver-page .driver-repeat-card > .driver-fields { padding: 19px; }
+  .driver-page .driver-repeat-actions { flex-wrap: wrap; }
+  .driver-page .driver-summary-header { padding: 13px 17px; }
+  .driver-page .driver-summary-header h2 { font-size: 20px; }
+  .driver-page .driver-summary-rows { padding-inline: 17px; }
+  .driver-page .driver-summary-rows > div { gap: 15px; padding-block: 12px; }
+  .driver-page .driver-document-grid { grid-template-columns: minmax(0, 1fr); gap: 20px; padding: 17px; }
+  .driver-page .driver-document-card { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: 15px; }
+  .driver-page .driver-document-card h3 { margin-top: 0; }
+  .driver-page .driver-certification .driver-choice { padding: 19px; }
+  .driver-page .driver-empty-state { padding: 29px 20px; }
+  .driver-page .driver-empty-state h2 { font-size: 23px; }
+  .driver-page .driver-next-stages h2 { font-size: 23px; }
+  .driver-page .driver-actionsbar { padding: 18px 23px; flex-wrap: wrap; gap: 12px; }
+  .driver-page .driver-actionsbar > div { gap: 7px; flex-wrap: wrap; }
+  .driver-page .driver-actionsbar .driver-save-status { flex-basis: 100%; }
+  .driver-page .driver-progress { margin-bottom: 20px; }
+  .driver-page .driver-main > .driver-preview-note { flex-direction: column; gap: 5px; padding: 12px 16px; margin-bottom: 20px; }
+  .driver-page .driver-main > .driver-preview-note > .eyebrow { padding-top: 0; }
+  .driver-page .driver-error-summary { margin: 22px 23px 0; padding: 15px 17px; }
+  .driver-page .driver-error-summary h2, .driver-page .driver-error-summary h3 { font-size: 16px; }
+  .driver-page .driver-save-state { flex-basis: 100%; max-width: none; }
+  .driver-page #driver-dialog .confirmation-content { padding: 24px; }
+  .driver-page #driver-dialog .confirmation-content h2 { font-size: 25px; }
+}
+@media (max-width: 390px) {
+  .driver-page .driver-main { padding-inline: 15px; }
+  .driver-page #driver-screen { padding: 24px 18px; }
+  .driver-page .driver-welcome-story, .driver-page .driver-welcome-panel { padding: 27px 21px; }
+  .driver-page .driver-welcome-story h1 { font-size: 32px; }
+  .driver-page .driver-choices { grid-template-columns: minmax(0, 1fr); }
+  .driver-page .driver-choices-three { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+  .driver-page .driver-choices-three .driver-choice { padding: 10px 8px; gap: 6px; }
+  .driver-page .driver-summary-header h2 { font-size: 18px; }
+  .driver-page .driver-summary-rows > div { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .driver-page .driver-document-card { grid-template-columns: minmax(0, 1fr); gap: 9px; }
+  .driver-page .driver-capture-actions .button { padding-inline: 12px; }
+  .driver-page .driver-actionsbar { padding-inline: 18px; }
+  .driver-page .driver-error-summary { margin-inline: 18px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .driver-page *, .driver-page *::before, .driver-page *::after { transition: none !important; animation: none !important; }
+}
+@media (max-width: 700px) {
+  .driver-page .driver-welcome-panel { order: -1; }
+}
+@media print {
+  .driver-page .header, .driver-page .trust-bar, .driver-page footer,
+  .driver-page .driver-progress, .driver-page .driver-actionsbar,
+  .driver-page .driver-summary-header .button,
+  .driver-page .driver-document-card .button,
+  .driver-page .driver-preview-note, .driver-page .driver-status,
+  .driver-page .driver-status-message, .driver-page .driver-save-state,
+  .driver-page .driver-error-summary, .driver-page .driver-received-actions,
+  .driver-page #driver-dialog { display: none !important; }
+  .driver-page .driver-main { max-width: none; padding: 0; }
+  .driver-page .driver-application-card { max-width: none; border: 0; }
+  .driver-page #driver-screen { padding: 0; }
+  .driver-page .driver-summary-card { break-inside: avoid; }
+}

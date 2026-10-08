@@ -1,32 +1,111 @@
-/* Fleet detail layout: vehicle overview, capacity, and included waiting time. */
+/* Approved vehicle options animate within each class; the wait policy stays visible. */
 .fleet-panel {
-  grid-template-columns: minmax(0, 1.25fr) minmax(0, .72fr) minmax(0, .85fr);
-  gap: 36px;
-  padding: 40px;
-  align-items: stretch;
-  background: linear-gradient(120deg, #fdfcf9, #f5f2e9);
-  box-shadow: 0 14px 40px #29241006;
+  display: grid;
+  grid-template-columns: minmax(0, 1.28fr) minmax(0, .86fr) minmax(205px, .78fr);
+  grid-template-areas: 'visual copy wait' 'visual specs wait' 'assurance assurance assurance';
+  gap: 25px 30px;
+  padding: 32px;
+  align-items: center;
+  background: linear-gradient(125deg, #fff, var(--cream));
+  border-color: var(--line);
+  box-shadow: 0 14px 40px #0b0d1305;
+  margin-top: 24px;
 }
-.fleet-copy { align-self: center; padding: 12px 0; }
-.fleet-copy h3 { font-size: clamp(30px, 3vw, 43px); }
-.fleet-copy .button { margin-top: 28px; }
-.fleet-specs {
-  grid-template-columns: 1fr;
-  gap: 26px;
+.fleet-visual {
+  grid-area: visual;
+  position: relative;
+  margin: 0;
+  width: 100%;
+  min-width: 0;
+  aspect-ratio: 8 / 5;
+  display: grid;
   align-content: center;
-  padding-left: 30px;
+  isolation: isolate;
 }
-.fleet-specs > div + div { border-top: 1px solid #ded6c3; padding-top: 22px; }
-.fleet-specs strong { margin-top: 9px; font-size: 37px; }
+.fleet-visual::before {
+  content: '';
+  position: absolute;
+  inset: 17% 3% 3%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, #dadee65c, transparent 70%);
+  z-index: -1;
+}
+.fleet-visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 8 / 5;
+  object-fit: contain;
+  opacity: 0;
+  mix-blend-mode: multiply;
+}
+.fleet-visual.has-vehicle-image img { opacity: 1; }
+.fleet-visual .fleet-image-outgoing {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+.fleet-visual figcaption {
+  position: absolute;
+  bottom: 0;
+  inset-inline: 0;
+  font-size: 9px;
+  line-height: 1.6;
+  color: var(--muted);
+  text-align: center;
+}
+.fleet-copy { grid-area: copy; align-self: end; padding: 0; }
+.fleet-copy .eyebrow { font-size: 8px; letter-spacing: 1.5px; }
+.fleet-copy h3 { font-size: clamp(27px, 2.5vw, 36px); line-height: 1.1; min-height: 2.2em; letter-spacing: -1.3px; margin: 13px 0 14px; }
+.fleet-copy p { font-size: 12px; line-height: 1.85; min-height: 5.55em; max-width: 330px; }
+.fleet-copy .button { margin-top: 22px; }
+.fleet-options {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 20px;
+}
+.fleet-option {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  gap: 5px;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+  transition: background .35s ease, border-color .35s ease;
+}
+.fleet-option:only-child { grid-column: 1 / -1; width: min(100%, 160px); }
+.fleet-option strong { color: var(--black); font-weight: 600; font-size: 11px; line-height: 1.4; overflow-wrap: anywhere; }
+.fleet-option > span { color: var(--muted); font-size: 10px; line-height: 1.6; min-height: 3.2em; overflow-wrap: anywhere; }
+.fleet-option-status { font-size: 8px; line-height: 1.5; color: var(--gold-dark); visibility: hidden; overflow-wrap: anywhere; }
+.fleet-option[data-active=true] { border-color: var(--gold); background: var(--gold-soft, #fbf7ef); }
+.fleet-option[data-active=true] .fleet-option-status { visibility: visible; }
+.fleet-specs {
+  grid-area: specs;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-self: start;
+  border: 0;
+  border-top: 1px solid var(--line);
+  padding: 20px 0 0;
+}
+.fleet-specs strong { margin-top: 7px; font-size: 28px; letter-spacing: -.8px; }
 .fleet-details { display: none; }
 .fleet-wait {
-  padding: 25px;
+  grid-area: wait;
+  padding: 24px;
   background: #ffffffd9;
-  border: 1px solid #e7e0d0;
-  border-radius: 10px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  align-self: stretch;
 }
-.wait-heading .eyebrow { font-size: 7px; letter-spacing: 1.5px; }
-.wait-heading h4 { margin: 9px 0; font-size: 19px; letter-spacing: -.6px; font-weight: 500; }
+.wait-heading .eyebrow { font-size: 7px; letter-spacing: 1.4px; }
+.wait-heading h4 { margin: 9px 0; font-size: 20px; letter-spacing: -.6px; font-weight: 500; }
 .wait-heading p { color: var(--muted); font-size: 10px; line-height: 1.7; }
 .wait-times { margin: 18px 0 0; }
 .wait-times > div {
@@ -42,30 +121,43 @@
 .wait-times dd { margin: 0; font-size: 24px; letter-spacing: -.9px; font-weight: 500; white-space: nowrap; }
 .wait-times dd span { font-size: 9px; letter-spacing: 0; color: var(--gold-dark); font-weight: 400; }
 .fleet-assurance {
-  grid-column: 1 / -1;
+  grid-area: assurance;
   display: flex;
   justify-content: center;
-  gap: 45px;
-  border-top: 1px solid #e2dac8;
-  padding-top: 22px;
+  gap: 36px;
+  border-top: 1px solid var(--line);
+  padding-top: 20px;
   font-size: 7px;
   letter-spacing: 1.4px;
-  color: #827653;
+  line-height: 1.7;
+  color: var(--muted);
 }
-@media (max-width: 1050px) {
-  .fleet-panel { grid-template-columns: 1fr 1fr; padding: 30px; gap: 28px; }
-  .fleet-specs { grid-template-columns: 1fr 1fr; gap: 20px; }
-  .fleet-specs > div + div { border-top: 0; padding-top: 0; }
-  .fleet-wait { grid-column: 1 / -1; }
-  .wait-times { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-  .wait-times > div { flex-direction: column; align-items: start; gap: 7px; padding-bottom: 0; }
+@media (max-width: 1100px) {
+  .fleet-panel {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    grid-template-areas: 'visual copy' 'visual specs' 'wait wait' 'assurance assurance';
+    padding: 28px;
+    gap: 24px 30px;
+  }
+  .fleet-wait { padding: 24px; }
+  .wait-times { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+  .wait-times > div { flex-direction: column; align-items: start; gap: 6px; padding-bottom: 0; }
 }
 @media (max-width: 700px) {
-  .fleet-panel { grid-template-columns: 1fr; padding: 25px; gap: 25px; }
-  .fleet-copy { padding: 0; }
-  .fleet-specs { border-left: 0; padding: 23px 0 0; }
+  body .fleet-tabs { border-radius: 24px; }
+  .fleet-panel {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: 'visual' 'copy' 'specs' 'wait' 'assurance';
+    padding: 22px;
+    gap: 24px;
+  }
+  .fleet-visual { max-width: 460px; justify-self: center; }
+  .fleet-visual figcaption { font-size: 8px; }
+  .fleet-copy h3 { font-size: 32px; }
+  .fleet-copy p { max-width: 100%; }
+  .fleet-specs { padding: 19px 0 0; border-left: 0; }
   .fleet-wait { padding: 22px; }
   .wait-times { grid-template-columns: 1fr 1fr; gap: 14px 20px; }
   .wait-times > div { padding-top: 12px; }
-  .fleet-assurance { flex-wrap: wrap; gap: 12px 20px; font-size: 6px; letter-spacing: 1px; text-align: center; }
+  .fleet-assurance { flex-wrap: wrap; gap: 9px 18px; font-size: 6px; letter-spacing: 1px; text-align: center; }
 }

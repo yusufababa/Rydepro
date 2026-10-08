@@ -1,0 +1,196 @@
+/* Responsive Satoshi scale: 16px web body, 12px mobile body. */
+:root {
+  --text-base: 16px;
+  --text-secondary: 14px;
+  --text-small: 12px;
+  --text-micro: 11px;
+  --text-control: 14px;
+  --text-eyebrow: 11px;
+  --title-section: clamp(36px, 3.3vw, 46px);
+  --title-card: 26px;
+  --title-feature: 22px;
+  --title-fleet: clamp(32px, 2.7vw, 40px);
+}
+html { font-size: var(--text-base); }
+body { font-size: var(--text-base); line-height: 1.65; }
+
+/* Reading text throughout the landing page and waitlist. */
+.center-heading > p, .section-heading > p, .about-copy,
+.ride-card p, .steps p, .service-grid p, .feature-grid p,
+.management-secondary p, .reserve-grid p, .business-intro > p,
+.business-grid p, .auction-main p, .early-access-card > p,
+.tier-preview > p, .faq-answer, .closing p,
+.waitlist-story > div > p, .waitlist-promise p, .form-panel > p,
+.confirmation-content > p, .trusted > .center-heading p {
+  font-size: var(--text-base);
+  line-height: 1.7;
+}
+.pricing-list li { font-size: var(--text-base); line-height: 1.65; }
+.section-note, .pricing-anchor, .rewards-summary li, .business-close,
+.text-link, .trusted > div:last-child {
+  font-size: var(--text-secondary);
+  line-height: 1.65;
+}
+.early-access-note { font-size: var(--text-small) !important; }
+
+/* Headings maintain a clear hierarchy without enlarging the controls. */
+.center-heading h2, .section-heading h2, .business h2,
+.trusted > .center-heading h2 {
+  font-size: var(--title-section);
+  line-height: 1.15;
+  letter-spacing: -.035em;
+}
+.ride-card h3, .pricing-section .ride-card h3,
+.reserve-grid h3, .management-secondary h3,
+.auction-main h3, .early-access-card h3, .tier-preview h3 {
+  font-size: var(--title-card);
+  line-height: 1.25;
+  letter-spacing: -.025em;
+}
+.steps h3, .service-grid h3, .feature-grid h3,
+.management-primary h3, .business-grid h3 {
+  font-size: var(--title-feature);
+  line-height: 1.3;
+  letter-spacing: -.025em;
+}
+.eyebrow, .hero-heading > .eyebrow, .fleet-copy .eyebrow,
+.wait-heading .eyebrow {
+  font-size: var(--text-eyebrow);
+  letter-spacing: .14em;
+  line-height: 1.6;
+}
+.hero .hero-heading h1 {
+  font-size: clamp(44px, 3.5vw, 62px);
+  letter-spacing: -.035em;
+}
+.hero .hero-description { font-size: 18px; line-height: 1.65; }
+.hero-facts p, .hero-facts li, .hero-facts > span,
+.hero .brand-principles {
+  font-size: var(--text-secondary);
+  letter-spacing: .08em;
+}
+.closing h2 { font-size: clamp(40px, 4vw, 56px); line-height: 1.15; }
+
+/* Navigation and actions fit the shared 36px pill controls. */
+.header nav { font-size: var(--text-secondary); }
+body button, body .button, body .text-button,
+body .ride-card .button, body .fleet-copy .button,
+body .hero-actions .button, body .fleet-tabs button,
+body .back-button {
+  font-size: var(--text-control);
+  line-height: 1;
+}
+body .button, body .text-button { padding-inline: 16px; }
+body .text-button { max-width: 100%; padding-inline: 13px; }
+body .fleet-tabs button { letter-spacing: .07em; }
+.trust-bar { font-size: var(--text-micro); line-height: 1.5; }
+
+/* Fleet information remains compact but legible. */
+.fleet-copy h3 { font-size: var(--title-fleet); line-height: 1.15; }
+.fleet-copy p { font-size: var(--text-base); line-height: 1.7; min-height: 5.1em; }
+.fleet-option strong { font-size: var(--text-control); }
+.fleet-option > span { font-size: var(--text-small); line-height: 1.5; min-height: 3em; }
+.fleet-option-status { font-size: 10px; line-height: 1.4; }
+.fleet-visual figcaption, .spec-label, .fleet-assurance {
+  font-size: var(--text-small);
+  line-height: 1.6;
+}
+.spec-label, .fleet-assurance { letter-spacing: .08em; }
+.fleet-assurance { flex-wrap: wrap; gap: 12px 28px; }
+.fleet-specs strong { font-size: 32px; line-height: 1.2; }
+.wait-heading h4 { font-size: 24px; line-height: 1.25; }
+.wait-heading p, .wait-times dt, .fleet-details { font-size: var(--text-secondary); line-height: 1.6; }
+.wait-times dd { font-size: 28px; line-height: 1.2; }
+.wait-times dd span { font-size: var(--text-small); }
+
+/* Data, supporting copy, and expandable details. */
+table { font-size: var(--text-base); }
+th { font-size: var(--text-secondary); letter-spacing: .04em; }
+.comparison-detail strong { font-size: var(--text-base); line-height: 1.5; }
+.comparison-detail span { font-size: var(--text-secondary); line-height: 1.65; }
+.auction-facts dt, .auction-facts span, .tier-list dd,
+.tier-list span { font-size: var(--text-secondary); }
+.auction-facts dd, .auction-facts strong, .tier-list dt,
+.tier-list strong { font-size: var(--text-base); line-height: 1.5; }
+.status-badge, .auction-facts .status-badge { font-size: var(--text-micro); letter-spacing: .08em; }
+.faq-list summary { font-size: 18px; line-height: 1.5; }
+.faq-list summary::after { font-size: var(--text-small); letter-spacing: .05em; }
+
+/* Forms and confirmation use the same reading scale. */
+.waitlist-story h1 { font-size: clamp(44px, 4.4vw, 64px); line-height: 1.1; }
+.form-panel h2 { font-size: 36px; line-height: 1.2; }
+legend { font-size: 18px; line-height: 1.4; }
+label { font-size: var(--text-secondary); line-height: 1.5; }
+body input, body select { font-size: var(--text-base); line-height: 1.4; min-width: 0; }
+.optional, .privacy, .form-notice, .micro {
+  font-size: var(--text-small);
+  line-height: 1.65;
+}
+.micro { letter-spacing: .08em; }
+.confirmation-content h2 { font-size: 42px; line-height: 1.15; }
+#footer-info h2 { font-size: 32px; line-height: 1.2; }
+.confirmation-email { font-size: var(--text-small); letter-spacing: .08em; }
+.confirmation-email span { font-size: var(--text-base); line-height: 1.5; }
+
+/* Footer and app band keep their approved layout and proportions. */
+.footer-links h3 { font-size: var(--text-small); letter-spacing: .08em; line-height: 1.5; }
+.footer-links a { font-size: var(--text-secondary); line-height: 1.65; }
+.reference-footer .footer-bottom,
+.reference-footer .footer-bottom small, .footer-contact {
+  font-size: var(--text-small);
+  line-height: 1.65;
+}
+.app-strip h2 { font-size: var(--text-base); line-height: 1.5; }
+.download-qr { font-size: var(--text-secondary); }
+.store-badge strong { font-size: 14px; }
+body .app-actions .store-badge small { font-size: 8px; }
+
+/* Allow larger text to reflow cleanly on tablet widths. */
+@media (max-width: 1050px) {
+  .footer-links { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 30px 24px; }
+}
+@media (max-width: 960px) {
+  .header nav { display: none; }
+}
+@media (max-width: 900px) {
+  .app-strip .download-group { flex-direction: column; align-items: flex-start; gap: 12px; }
+}
+@media (max-width: 700px) {
+  :root {
+    --text-base: 12px;
+    --text-secondary: 12px;
+    --text-small: 10px;
+    --text-micro: 10px;
+    --text-control: 12px;
+    --text-eyebrow: 10px;
+    --title-section: 29px;
+    --title-card: 22px;
+    --title-feature: 18px;
+    --title-fleet: 30px;
+  }
+  .hero .hero-heading h1 { font-size: clamp(33px, 7.9vw, 46px); }
+  .hero .hero-description { font-size: 14px; }
+  .hero-facts p, .hero-facts li, .hero-facts > span,
+  .hero .brand-principles { font-size: 11px; }
+  .hero .brand-principles { letter-spacing: .06em; }
+  .closing h2 { font-size: 35px; }
+  .waitlist-story h1 { font-size: 44px; }
+  .form-panel h2 { font-size: 29px; }
+  legend { font-size: 16px; }
+  .confirmation-content h2 { font-size: 34px; }
+  #footer-info h2 { font-size: 27px; }
+  .faq-list summary { font-size: 14px; }
+  .fleet-specs strong { font-size: 28px; }
+  .wait-heading h4 { font-size: 22px; }
+  .wait-times dd { font-size: 26px; }
+  .fleet-option > span { font-size: 11px; }
+  .fleet-visual figcaption { font-size: 10px; }
+  .store-badge strong { font-size: 12px; }
+  body .app-actions .store-badge small { font-size: 7px; }
+}
+@media (max-width: 480px) {
+  .service-grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 390px) {
+  .footer-links { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}

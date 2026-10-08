@@ -1,0 +1,23 @@
+{
+  "electric": {
+    "file": "electric.webp",
+    "width": 960,
+    "height": 600,
+    "tool": "built-in image_gen",
+    "prompt": "Use case: product-mockup. Asset type: optimized RYDEPRO website fleet illustration. Photorealistic premium studio vehicle photography. One single modern midsize electric sedan, sleek aerodynamic low body, smooth closed front grille, contemporary understated LED lighting in glossy black paint. Front three-quarter view, front pointing left, full vehicle with all wheels visible and generous empty margins, landscape 8:5 composition. Isolated on flat almost-white background #FDFCF9 with very subtle contact shadow, diffused studio lighting and controlled reflections. No people, no road, no scenery, no branding, no logos, no text, no watermark. Clean consistent catalog framing for black and gold luxury transportation website. Car centered occupying roughly 80 percent of width."
+  },
+  "minivan": {
+    "file": "minivan.webp",
+    "width": 960,
+    "height": 600,
+    "tool": "built-in image_gen",
+    "prompt": "Use case: product-mockup. Asset type: optimized RYDEPRO website fleet illustration. Photorealistic premium studio vehicle photography. One single premium passenger minivan with clearly visible sliding side door, tall practical cabin, comfortable executive shuttle proportions in glossy black paint. Front three-quarter view, front pointing left, full vehicle with all wheels visible and generous empty margins, landscape 8:5 composition. Isolated on flat almost-white background #FDFCF9 with very subtle contact shadow, diffused studio lighting and controlled reflections. No people, no road, no scenery, no branding, no logos, no text, no watermark. Clean consistent catalog framing for black and gold luxury transportation website. Car centered occupying roughly 80 percent of width."
+  },
+  "motorcoach": {
+    "file": "motorcoach.webp",
+    "width": 960,
+    "height": 600,
+    "tool": "built-in image_gen",
+    "prompt": "Use case: product-mockup. Asset type: optimized RYDEPRO website fleet illustration. Photorealistic premium studio vehicle photography. One single full-size elegant 56-passenger touring motorcoach, large continuous tinted window row, three axles, realistic long coach proportions in glossy black paint. Front three-quarter view, front pointing left, full vehicle with all wheels visible and generous empty margins, landscape 8:5 composition. Isolated on flat almost-white background #FDFCF9 with very subtle contact shadow, diffused studio lighting and controlled reflections. No people, no road, no scenery, no branding, no logos, no text, no watermark. Clean consistent catalog framing for black and gold luxury transportation website. Car centered occupying roughly 80 percent of width."
+  }
+}

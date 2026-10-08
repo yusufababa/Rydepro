@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="description" content="Apply to drive with RYDEPRO. Build your driver profile, capture your documents, and prepare your application." />
+    <title>Driver application — RYDEPRO</title>
+    <link rel="stylesheet" href="/src/styles.css" />
+    <link rel="stylesheet" href="/src/redesign.css" />
+    <link rel="stylesheet" href="/src/polish.css" />
+    <link rel="stylesheet" href="/src/typography.css" />
+    <link rel="stylesheet" href="/src/driver/driver.css" />
+    <link rel="preload" href="/assets/fonts/satoshi-regular.woff2" as="font" type="font/woff2" crossorigin />
+    <script type="module" src="/src/driver/main.js"></script>
+  </head>
+  <body class="driver-page">
+    <!-- SITE_HEADER -->
+    <main class="driver-main" id="driver-main">
+      <div class="driver-preview-note"><span class="eyebrow gold">APPLICATION PREVIEW</span><p>Explore the flow with sample details. Verification and submission are simulated; nothing is sent to RYDEPRO.</p></div>
+      <section id="driver-intro" aria-label="Start your application"><h1>Drive with a higher standard.</h1><p>Preparing your application…</p></section>
+      <section id="driver-workspace" hidden aria-label="Driver application">
+        <div id="driver-progress" class="driver-progress" aria-label="Application progress"></div>
+        <form id="driver-form" class="driver-application-card" novalidate>
+          <div id="driver-error-summary" class="driver-error-summary" role="alert" tabindex="-1" hidden></div>
+          <div id="driver-screen"></div>
+          <div class="driver-actionsbar" id="driver-actions"></div>
+        </form>
+      </section>
+      <p id="driver-status" class="driver-status-message" role="status" aria-live="polite" aria-atomic="true"></p>
+      <noscript><p class="driver-note">Enable JavaScript to complete the interactive driver application. You can also contact <a href="mailto:support@rydepro.com">support@rydepro.com</a>.</p></noscript>
+    </main>
+    <!-- SITE_FOOTER -->
+    <!-- SITE_FOOTER_DIALOG -->
+    <dialog id="driver-dialog" aria-labelledby="driver-dialog-title">
+      <div class="confirmation-content">
+        <span class="eyebrow gold">YOUR APPLICATION</span>
+        <h2 id="driver-dialog-title"></h2>
+        <p id="driver-dialog-message"></p>
+        <div class="driver-dialog-actions"><button type="button" class="button button-outline" data-action="dialog-cancel">Cancel</button><button type="button" class="button button-dark" id="driver-dialog-confirm" data-action="dialog-confirm">Continue</button></div>
+      </div>
+    </dialog>
+  </body>
+</html>

@@ -2,6 +2,7 @@
   "name": "rydepro",
   "version": "1.0.0",
   "private": true,
-  "description": "RYDEPRO premium mobility landing and waitlist experience",
-  "scripts": { "dev": "node scripts/server.mjs", "start": "node scripts/server.mjs", "check": "node --check src/main.js", "build": "npm run check && node scripts/build.mjs" }
+  "type": "module",
+  "description": "RYDEPRO mobility landing, waitlist, and driver application experiences",
+  "scripts": { "dev": "node scripts/server.mjs", "start": "node scripts/server.mjs", "check": "node --check src/main.js && node --check src/fleet.js && node --check src/driver/main.js && node --check src/driver/views.js && node --check src/driver/model.js && node --check src/driver/data.js && node --check src/driver/camera.js && node --check src/driver/flow.js && node --check src/driver/summary.js && node --check scripts/site-shell.mjs && node --check scripts/server.mjs && node --check scripts/build.mjs", "test": "node --test tests/*.test.mjs", "build": "npm run check && node scripts/build.mjs" }
 }

@@ -1,0 +1,371 @@
+/* RYDEPRO: the shared light palette and final component treatment. */
+:root {
+  --ink: #0b0d13;
+  --black: var(--ink);
+  --gold: #c5a059;
+  --gold-dark: #8f6d30;
+  --gold-soft: #fbf7ef;
+  --surface: #f7f8fa;
+  --cream: var(--surface);
+  --muted: #666c75;
+  --line: #e2e4e8;
+  --font: Satoshi, Arial, sans-serif;
+  --control-height: 36px;
+  --control-radius: 999px;
+  font-family: var(--font);
+}
+
+body { background: #fff; color: var(--ink); }
+::selection { background: #eadcc0; color: var(--ink); }
+.gold { color: var(--gold-dark); }
+.header, .reference-footer { background: #fff; border-color: var(--line); }
+.header { box-shadow: 0 3px 14px #0b0d1305; }
+.trust-bar { background: var(--ink); color: #e0e1e3; }
+.header nav a:hover, .footer-links a:hover, .footer-contact a:hover {
+  color: var(--gold-dark);
+}
+.footer-links a, .reference-footer .footer-bottom,
+.reference-footer .footer-bottom small { color: var(--muted); }
+.reference-footer .footer-bottom { border-color: var(--line); }
+.contact-divider { color: #b6bac1; }
+.trusted > div:last-child { color: var(--muted); }
+
+/* One compact, fully rounded control style throughout the experience. */
+body button, body .button, body .text-button, body input, body select,
+body .fleet-tabs button, body .app-actions .store-badge {
+  height: var(--control-height);
+  min-height: var(--control-height);
+  max-height: var(--control-height);
+  border-radius: var(--control-radius);
+  padding-block: 0;
+  font-family: var(--font);
+}
+body .button, body .text-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding-inline: 19px;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  gap: 8px;
+  transition: background-color .2s ease, border-color .2s ease, color .2s ease,
+    box-shadow .2s ease;
+  transform: none;
+  box-shadow: none;
+}
+body .button-dark, body .button-gold, .confirmation-content .button {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #fff;
+}
+body .button-outline, body .text-button {
+  background: #fff;
+  border: 1px solid var(--line);
+  color: var(--ink);
+}
+body .button:hover, body .button:active,
+body .button-dark:hover, body .button-dark:active,
+body .button-gold:hover, body .button-gold:active,
+body .button-outline:hover, body .button-outline:active,
+body .text-button:hover, body .text-button:active,
+.confirmation-content .button:hover, .confirmation-content .button:active {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--ink);
+  transform: none;
+}
+button:focus-visible, a:focus-visible, summary:focus-visible {
+  outline: 2px solid var(--gold-dark);
+  outline-offset: 4px;
+}
+body input, body select {
+  background: #fafaf7;
+  border-color: #dedfd6;
+  color: var(--ink);
+  padding-inline: 16px;
+  font-size: 12px;
+}
+input::placeholder { color: #9c9f95; }
+body input:focus, body select:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px #c5a05918;
+}
+
+/* The reference hero: large typography, quiet facts, and a divided brand rail. */
+.hero {
+  padding: 0;
+  text-align: left;
+  color: var(--ink);
+  background: var(--surface);
+  overflow: hidden;
+}
+.hero::before, .hero::after { display: none; }
+.hero-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.22fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 7%;
+  padding: 78px 6% 80px;
+}
+.hero-heading, .hero-information { min-width: 0; }
+.hero-heading > .eyebrow {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 1.8px;
+  color: var(--gold-dark);
+  margin-bottom: 16px;
+}
+.hero .hero-heading h1 {
+  margin: 0;
+  font-size: clamp(40px, 3.5vw, 58px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -1.9px;
+  animation: none;
+}
+.hero .hero-heading h1 .hero-lead { display: block; color: var(--ink); }
+.hero .hero-heading h1 .gold { color: var(--gold); }
+.hero .hero-description {
+  color: var(--muted);
+  font-size: clamp(15px, 1.15vw, 17px);
+  font-weight: 400;
+  line-height: 1.65;
+  max-width: 610px;
+}
+.hero-facts { margin: 24px 0 21px; padding: 0; list-style: none; }
+.hero-facts p, .hero-facts li, .hero-facts > span {
+  display: block;
+  padding: 12px 0;
+  border-top: 1px solid var(--line);
+  color: var(--ink);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.6;
+  text-transform: uppercase;
+  letter-spacing: 1.4px;
+}
+.hero-facts > :last-child { border-bottom: 1px solid var(--line); }
+.hero .hero-actions { justify-content: flex-start; flex-wrap: wrap; gap: 10px; }
+.hero .button-dark { background: var(--ink); color: #fff; border-color: var(--ink); }
+.hero .button-outline { background: transparent; color: var(--ink); border-color: #d5d9e0; }
+.hero .button:hover, .hero .button:active {
+  background: var(--gold); color: var(--ink); border-color: var(--gold);
+}
+.hero .brand-principles {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  margin: 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 1.6px;
+  font-weight: 700;
+}
+.brand-principles span { display: grid; place-items: center; min-height: 52px; padding: 10px 12px; text-align: center; }
+.brand-principles span + span { border-left: 1px solid var(--line); }
+.brand-principles span + span::before { display: none; }
+
+/* A single black download band immediately after the hero. */
+.app-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  gap: 24px;
+  background: var(--ink);
+  color: #fff;
+  padding-top: 22px;
+  padding-bottom: 22px;
+  border: 0;
+}
+.app-strip .download-group {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex: initial;
+  margin: 0;
+  gap: 24px;
+  min-width: 0;
+}
+.app-strip h2 { margin: 0; font-size: 12px; font-weight: 500; letter-spacing: 0; line-height: 1.7; }
+body .app-strip .app-actions { display: flex; align-items: center; gap: 9px; width: auto; }
+body .app-actions .store-badge {
+  min-width: 120px;
+  padding-inline: 12px;
+  border-color: #ffffff61;
+  background: transparent;
+  color: #fff;
+}
+.store-badge svg { width: 17px; height: 21px; }
+body .app-actions .store-badge small { font-size: 6px; color: inherit; }
+.store-badge strong { font-size: 12px; font-weight: 500; }
+body .app-actions .store-badge:hover, body .app-actions .store-badge:active {
+  background: var(--gold); border-color: var(--gold); color: var(--ink);
+}
+.download-qr { display: flex; align-items: center; gap: 18px; font-size: 11px; color: #fff; }
+.download-qr img { width: 44px; height: 44px; background: #fff; }
+
+/* Neutral section surfaces and a consistent stroke on every card. */
+.pricing-section, .about, .journey, .fleet, .reserve, .difference,
+.auction-section, .faq-section { background: #fff; }
+.services, .platform, .trusted, .expansion-section { background: var(--surface); }
+.business { background: #f2f0e9; }
+.closing { background: radial-gradient(ellipse at 50% 100%, #efe8d7, transparent 70%), #fcfbf8; }
+.business, .trusted { border-color: var(--line); }
+.center-heading h2, .section-heading h2, .business h2, .closing h2,
+.ride-card h3, .service-grid h3, .feature-grid h3, .reserve-grid h3,
+.business-grid h3, .auction-main h3, .early-access-card h3, .tier-preview h3 { color: var(--ink); }
+.center-heading > p, .section-heading > p, .section-note, .pricing-anchor,
+.ride-card p, .service-grid p, .feature-grid p, .reserve-grid p,
+.business-grid p, .auction-main p, .early-access-card > p, .tier-preview > p,
+.rewards-summary li, .comparison-detail span, .closing p { color: var(--muted); }
+.about-copy {
+  max-width: 850px;
+  margin: 22px auto 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.9;
+}
+.ride-card, .pricing-section .ride-card, .pricing-section .ride-card:last-child,
+.service-grid article, .feature-grid article, .management-secondary article,
+.business-grid article, .early-access-card, .tier-preview, .auction-grid {
+  border-color: var(--line);
+  background: #fff;
+  box-shadow: none;
+  transition: background-color .22s ease, border-color .22s ease, box-shadow .22s ease;
+  transform: none;
+}
+.ride-card:hover, .ride-card:focus-within,
+.service-grid article:hover, .service-grid article:focus-within,
+.feature-grid article:hover, .feature-grid article:focus-within,
+.business-grid article:hover, .business-grid article:focus-within,
+.early-access-card:hover, .early-access-card:focus-within,
+.tier-preview:hover, .tier-preview:focus-within,
+.auction-grid:hover, .auction-grid:focus-within,
+.pricing-section .ride-card:hover, .pricing-section .ride-card:focus-within {
+  background: var(--gold-soft);
+  border-color: var(--gold);
+  box-shadow: 0 8px 25px #0b0d1305;
+  transform: none;
+}
+.pricing-list li, .steps article, .business-close, .auction-facts > div,
+.auction-facts li, .auction-facts dl > div, .tier-list > div {
+  border-color: var(--line);
+}
+.pricing-list li, .auction-facts dt, .auction-facts span,
+.tier-list span, .tier-list dd, .business-close, .early-access-note { color: var(--muted); }
+.early-access-note { color: var(--muted) !important; }
+.steps article { transition: border-color .22s ease; }
+.steps article:hover { border-color: var(--gold); }
+.status-badge { color: var(--gold-dark); background: var(--gold-soft); border-color: #d9c49e; }
+.text-link { color: var(--gold-dark); }
+.text-link:hover { color: var(--ink); }
+
+/* Keep the joined stroke style instead of turning the benefits into separate cards. */
+.reserve-grid { border-color: var(--line); background: #fff; }
+.reserve-grid article {
+  position: relative;
+  background: transparent;
+  transition: background-color .22s ease, box-shadow .22s ease;
+}
+.reserve-grid article + article { border-color: var(--line); }
+.reserve-grid article:hover, .reserve-grid article:focus-within {
+  background: var(--gold-soft);
+  box-shadow: inset 0 0 0 1px var(--gold);
+}
+
+/* Fleet inherits the shared colors; the fleet sheet owns its motion and layout. */
+body .fleet-tabs { background: var(--surface); border-color: var(--line); }
+.fleet-tabs button { color: var(--ink); }
+.fleet-tabs button[aria-selected=true] { background: var(--ink); color: #fff; box-shadow: none; }
+.fleet-tabs button:hover, .fleet-tabs button:active { background: var(--gold); color: var(--ink); }
+.fleet-panel { background: var(--surface); border-color: var(--line); box-shadow: none; }
+.fleet-wait { background: #fff; border-color: var(--line); }
+.fleet-wait, .fleet-option {
+  transition: border-color .25s ease, background-color .25s ease;
+}
+.fleet-wait:hover, .fleet-wait:focus-within,
+.fleet-option:hover, .fleet-option:focus-within {
+  border-color: var(--gold);
+  background: var(--gold-soft);
+}
+.fleet-specs, .fleet-assurance, .fleet-details, .wait-times > div { border-color: var(--line); }
+.fleet-assurance { color: var(--muted); }
+.spec-label { color: var(--gold-dark); }
+.fleet-visual::before { background: radial-gradient(ellipse, #dde1e733, transparent 70%); }
+
+/* Comparison, FAQ, and forms use the same strokes and gold feedback. */
+.comparison-wrap, th, td, .faq-list, .faq-list details { border-color: var(--line); }
+th { background: var(--surface); color: var(--ink); }
+td:last-child { color: var(--muted); }
+tbody tr { transition: background-color .2s ease; }
+tbody tr:hover { background: var(--gold-soft); }
+.faq-list details { transition: border-color .2s ease; }
+.faq-list details:hover, .faq-list details[open] { border-color: var(--gold); }
+.faq-list summary { color: var(--ink); transition: color .2s ease; }
+.faq-list summary:hover, .faq-list details[open] summary { color: var(--gold-dark); }
+.faq-answer { color: var(--muted); }
+.waitlist-story { background: var(--surface); }
+.waitlist-promise, legend, dialog, .confirmation-email { border-color: var(--line); }
+.form-panel, dialog { background: #fff; }
+.back-button { background: transparent; color: var(--muted); }
+.back-button:hover, .back-button:active { background: var(--gold-soft); color: var(--ink); border-color: var(--gold); }
+.optional, .privacy, .form-notice, .micro { color: var(--muted); }
+dialog::backdrop { background: #0b0d136f; }
+
+@media (min-width: 1600px) {
+  .header, .section, .app-strip, .trusted, .reference-footer {
+    padding-inline: max(6%, calc((100vw - 1680px) / 2));
+  }
+  .hero { padding-inline: 0; }
+  .hero-layout { padding-inline: max(6%, calc((100vw - 1680px) / 2)); }
+}
+@media (max-width: 1050px) {
+  .hero-layout { gap: 5%; padding-block: 62px; }
+  .hero .hero-heading h1 { font-size: 42px; letter-spacing: -1.4px; }
+  .hero .hero-description { font-size: 15px; }
+  .hero-facts p, .hero-facts li, .hero-facts > span { font-size: 10px; letter-spacing: 1px; }
+  .app-strip .download-group { gap: 16px; }
+  .app-strip h2 { font-size: 11px; }
+  .download-qr { gap: 12px; }
+}
+@media (max-width: 700px) {
+  .steps article { display: block; padding: 22px 0; }
+  .steps h3 { margin-top: 0; }
+  .steps p { margin-top: 9px; }
+  .hero-layout { grid-template-columns: minmax(0, 1fr); gap: 29px; padding: 42px 6% 38px; }
+  .hero-heading > .eyebrow { font-size: 8px; letter-spacing: 1.6px; margin-bottom: 13px; }
+  .hero .hero-heading h1 { font-size: clamp(33px, 7.9vw, 46px); letter-spacing: -1.2px; line-height: 1.17; }
+  .hero .hero-description { font-size: 14px; line-height: 1.75; }
+  .hero-facts { margin-block: 20px; }
+  .hero-facts p, .hero-facts li, .hero-facts > span { padding-block: 10px; font-size: 10px; letter-spacing: 1px; }
+  .hero .brand-principles { grid-template-columns: repeat(2, minmax(0, 1fr)); font-size: 9px; letter-spacing: 1.1px; }
+  .brand-principles span { min-height: 45px; }
+  .brand-principles span:nth-child(3) { border-left: 0; }
+  .brand-principles span:nth-child(n+3) { border-top: 1px solid var(--line); }
+  .app-strip { flex-wrap: wrap; gap: 19px; padding-block: 20px; }
+  .app-strip .download-group { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .app-strip h2 { font-size: 11px; }
+  body .app-strip .app-actions { gap: 8px; }
+  body .app-actions .store-badge { min-width: 113px; padding-inline: 10px; }
+  .store-badge strong { font-size: 11px; }
+  .download-qr { flex-direction: column; gap: 7px; font-size: 8px; }
+  .download-qr img { width: 42px; height: 42px; }
+  .about-copy { font-size: 12px; }
+  body input, body select { font-size: 16px; }
+}
+@media (max-width: 390px) {
+  .hero .hero-heading h1 { font-size: 33px; }
+  .app-strip .download-group { width: 100%; }
+  .download-qr { flex-direction: row; gap: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ride-card, .reserve-grid article, .service-grid article,
+  .feature-grid article, .business-grid article, .early-access-card,
+  .tier-preview, .auction-grid { transform: none; }
+}

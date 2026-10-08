@@ -1,0 +1,30 @@
+{
+  "premium": {
+    "file": "premium.webp",
+    "width": 960,
+    "height": 600,
+    "tool": "built-in image_gen",
+    "prompt": "Use case: product-mockup. Asset type: RYDEPRO fleet website illustration. A single photorealistic a refined black midsize premium sedan, understated modern front fascia, no visible branding. Consistent catalogue studio photography, front three-quarter view facing left, entire vehicle including wheels fully in frame, moderate distance with generous margins. Wide landscape composition 8:5. Seamless pale warm ivory background #FDFCF9, soft grounded natural shadow, polished black paint, restrained premium lighting. No people, no text, no logos, no license plate lettering, no watermarks, no scenery or extra objects. Position vehicle centered horizontally in lower middle, vehicle occupies 80 percent of width. High detail but clean edges; meant to remain clear when displayed at 450px wide."
+  },
+  "executive": {
+    "file": "executive.webp",
+    "width": 960,
+    "height": 600,
+    "tool": "built-in image_gen",
+    "prompt": "Use case: product-mockup. Asset type: RYDEPRO fleet website illustration. A single photorealistic a black long wheelbase executive sedan, elegant chrome details, formal chauffeur proportions, no visible branding. Consistent catalogue studio photography, front three-quarter view facing left, entire vehicle including wheels fully in frame, moderate distance with generous margins. Wide landscape composition 8:5. Seamless pale warm ivory background #FDFCF9, soft grounded natural shadow, polished black paint, restrained premium lighting. No people, no text, no logos, no license plate lettering, no watermarks, no scenery or extra objects. Position vehicle centered horizontally in lower middle, vehicle occupies 80 percent of width. High detail but clean edges; meant to remain clear when displayed at 450px wide."
+  },
+  "luxury": {
+    "file": "luxury.webp",
+    "width": 960,
+    "height": 600,
+    "tool": "built-in image_gen",
+    "prompt": "Use case: product-mockup. Asset type: RYDEPRO fleet website illustration. A single photorealistic a large black luxury SUV, refined sculptural bodywork, tall premium proportions, no visible branding. Consistent catalogue studio photography, front three-quarter view facing left, entire vehicle including wheels fully in frame, moderate distance with generous margins. Wide landscape composition 8:5. Seamless pale warm ivory background #FDFCF9, soft grounded natural shadow, polished black paint, restrained premium lighting. No people, no text, no logos, no license plate lettering, no watermarks, no scenery or extra objects. Position vehicle centered horizontally in lower middle, vehicle occupies 80 percent of width. High detail but clean edges; meant to remain clear when displayed at 450px wide."
+  },
+  "commercial": {
+    "file": "commercial.webp",
+    "width": 960,
+    "height": 600,
+    "tool": "built-in image_gen",
+    "prompt": "Use case: product-mockup. Asset type: RYDEPRO fleet website illustration. A single photorealistic a sleek black luxury passenger minibus for group transportation, approximately 14-seat proportions, no visible branding. Consistent catalogue studio photography, front three-quarter view facing left, entire vehicle including wheels fully in frame, moderate distance with generous margins. Wide landscape composition 8:5. Seamless pale warm ivory background #FDFCF9, soft grounded natural shadow, polished black paint, restrained premium lighting. No people, no text, no logos, no license plate lettering, no watermarks, no scenery or extra objects. Position vehicle centered horizontally in lower middle, vehicle occupies 80 percent of width. High detail but clean edges; meant to remain clear when displayed at 450px wide."
+  }
+}

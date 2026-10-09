@@ -1,7 +1,7 @@
 /** Optional dependency-free landing checks in a fresh headless Chromium profile. */
 import assert from 'node:assert/strict';
 import { spawn } from 'node:child_process';
-import { access, mkdir, readFile, rm } from 'node:fs/promises';
+import { access, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -94,7 +94,7 @@ try {
   await viewport(1440);
   await motion('reduce');
   await send('Page.navigate', { url: `${base}/#fleet` });
-  await waitFor(`document.readyState === 'complete' && !!document.querySelector('#fleet-options button[aria-pressed=true]')`);
+  await waitFor(`location.hash === '#fleet' && document.readyState === 'complete' && !!document.querySelector('#fleet-options button[aria-pressed=true]') && document.querySelectorAll('#difference .comparison-card').length === 9 && !!document.querySelector('#year')?.textContent.trim()`);
   await evaluate('document.fonts.ready');
   const stylesheets = await evaluate(`[...document.querySelectorAll('link[rel=stylesheet]')].map(link => new URL(link.href).pathname)`);
   for (const stylesheet of stylesheets) assert.equal(responses.get(stylesheet), 200, `Stylesheet failed to load: ${stylesheet}`);
@@ -147,6 +147,77 @@ try {
     }
   }
   console.log('Responsive checks passed at 768px, 390px, and 320px with no horizontal overflow.');
+
+  const comparisonPairs = [
+    ['Verified & screened drivers', '3-level check: FBI rap sheet, DOJ background, and third-party verification.', 'Variable driver screening', 'Screening standards vary by market and provider.'],
+    ['Scheduled and on-demand reservations', 'Book weeks ahead or request same-day.', 'Availability varies', 'Advance scheduling and same-day options depend on the provider.'],
+    ['Flight monitoring and gate tracking', 'Pickup adjusts automatically to your flight.', 'Flight tracking varies', 'Riders may need to manage flight changes and delays.'],
+    ['Fixed + Auction, transparent pricing', 'Choose flat fare or set your maximum and let the auction work toward a match.', 'Demand-based pricing', 'Fares may change with demand; pricing models vary.'],
+    ['Corporate billing and expense integration', 'Centralized account, trip history, and reporting.', 'Billing options vary', 'Receipts and reconciliation may be handled by the rider.'],
+    ['Premium, inspected vehicles', 'Vehicle class and condition verified before service.', 'Vehicle condition varies', 'Vehicle classes and inspection standards depend on the service.'],
+    ['10-tier rewards ladder', 'Credits scale with every eligible ride, unlocking escalating multipliers and benefits.', 'Loyalty programs vary', 'Tier structures and progression depend on the provider.'],
+    ['Referral credits and priority access', 'Earn ride credits for every new member and skip the queue at higher tiers.', 'Rewards and dispatch vary', 'Referral offers and priority access depend on the service.'],
+    ['24/7 live support', 'Reach a person, any hour.', 'Support channels vary', 'In-app chat and live support availability depend on the provider.'],
+  ];
+  const screenshotComparison = async width => {
+    await evaluate('window.scrollTo({ top: 0, behavior: "instant" })');
+    const clip = await evaluate(`(() => { const rect = document.querySelector('#difference').getBoundingClientRect(); return { x: rect.left + scrollX, y: rect.top + scrollY, width: rect.width, height: rect.height, scale: 1 }; })()`);
+    const screenshot = await send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true, clip });
+    await writeFile(path.join(temporary, `comparison-visible-${width}.png`), Buffer.from(screenshot.data, 'base64'));
+  };
+  const cardCopy = await evaluate(`[...document.querySelectorAll('#difference .comparison-card')].map(card => [
+    '.comparison-pro h3', '.comparison-pro p', '.comparison-other h4', '.comparison-other p',
+  ].map(selector => card.querySelector(selector)?.textContent.replace(/\\s+/g, ' ').trim()))`);
+  assert.equal(cardCopy.length, 9, 'All nine comparisons must remain in the HTML.');
+  for (const pair of comparisonPairs) {
+    const matches = cardCopy.filter(card => card[0] === pair[0]);
+    assert.equal(matches.length, 1, `Missing or duplicated comparison: ${pair[0]}`);
+    assert.deepEqual(matches[0], pair, `Original comparison copy must remain together: ${pair[0]}`);
+  }
+  assert.equal(await evaluate(`document.querySelectorAll('#difference .comparison-cards').length`), 1, 'All comparisons must share one visible grid.');
+  assert.equal(await evaluate(`document.querySelectorAll('#difference .comparison-cards > .comparison-card').length`), 9);
+  assert.equal(await evaluate(`document.querySelectorAll('#difference button, #difference .comparison-tabs, #difference .comparison-panel, #difference [role=tab], #difference [role=tabpanel]').length`), 0, 'Comparison content must not require tabs or controls.');
+
+  for (const width of [1440, 768, 390, 320]) {
+    await viewport(width, 1000);
+    const geometry = await evaluate(`({
+      width: innerWidth, scroll: document.documentElement.scrollWidth,
+      display: getComputedStyle(document.querySelector('#difference .comparison-cards')).display,
+      overflow: [...document.querySelectorAll('#difference *')].filter(element => { const rect = element.getBoundingClientRect(); return rect.width > 0 && (rect.left < -1 || rect.right > innerWidth + 1); }).map(element => element.id || element.className || element.tagName),
+      cards: [...document.querySelectorAll('#difference .comparison-card')].map(card => {
+        const rect = card.getBoundingClientRect();
+        const pro = card.querySelector('.comparison-pro');
+        const other = card.querySelector('.comparison-other');
+        return {
+          left: rect.left, top: rect.top, right: rect.right, bottom: rect.bottom,
+          visible: card.checkVisibility({ checkOpacity: true, checkVisibilityCSS: true }),
+          proBottom: pro.getBoundingClientRect().bottom, otherTop: other.getBoundingClientRect().top,
+          backgrounds: [card, pro, other].map(element => getComputedStyle(element).backgroundColor),
+        };
+      }),
+    })`);
+    assert.ok(geometry.scroll <= geometry.width, `Page overflows at ${width}px.`);
+    assert.deepEqual(geometry.overflow, [], `Comparison content overflows at ${width}px.`);
+    assert.equal(geometry.display, 'grid');
+    assert.equal(geometry.cards.length, 9);
+    for (const card of geometry.cards) {
+      assert.ok(card.visible && card.right > card.left && card.bottom > card.top, `Every comparison must remain readable at ${width}px.`);
+      assert.ok(card.proBottom <= card.otherTop + 1, `Each RYDEPRO benefit must appear above its rideshare comparison at ${width}px.`);
+      for (const background of card.backgrounds) {
+        const channels = background.match(/[\d.]+/g)?.map(Number) || [];
+        if (channels.length === 3 || channels[3] > 0.1) {
+          assert.ok(channels.slice(0, 3).every(channel => channel >= 200), `Comparison surfaces must stay light: ${background}.`);
+        }
+      }
+    }
+    const expectedColumns = width === 1440 ? 3 : width === 768 ? 2 : 1;
+    assert.equal(geometry.cards.filter(card => Math.abs(card.top - geometry.cards[0].top) < 1).length, expectedColumns, `Expected ${expectedColumns} comparison columns at ${width}px.`);
+    for (const [index, card] of geometry.cards.entries()) {
+      if (index >= expectedColumns) assert.ok(card.top >= geometry.cards[index - expectedColumns].bottom - 1, `Comparison rows overlap at ${width}px.`);
+    }
+    if (width === 1440 || width === 390) await screenshotComparison(width);
+  }
+  console.log('Comparison checks passed: all nine original pairs always visible, light surfaces, no tabs, and responsive three/two/one-column layout without overflow. Desktop and mobile screenshots saved in .landing-qa/.');
 
   await viewport(1440);
   await click('#fleet [data-waitlist]');

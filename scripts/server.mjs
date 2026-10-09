@@ -8,7 +8,7 @@ const port = Number(process.env.PORT || 5173);
 const mime = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.json': 'application/json', '.png': 'image/png', '.jpg': 'image/jpeg', '.webp': 'image/webp', '.woff2': 'font/woff2' };
 const publicFiles = new Set([
   'index.html', 'logo.png', 'src/styles.css', 'src/fleet.css', 'src/redesign.css', 'src/polish.css', 'src/main.js', 'src/fleet.js',
-  'src/typography.css', 'src/landing.css',
+  'src/typography.css', 'src/landing.css', 'src/comparison.css',
   'driver.html', 'src/driver/main.js', 'src/driver/model.js', 'src/driver/data.js', 'src/driver/views.js', 'src/driver/driver.css',
   'src/driver/camera.js', 'src/driver/flow.js', 'src/driver/summary.js',
   'assets/hero-flag.png', 'assets/download-qr.png',

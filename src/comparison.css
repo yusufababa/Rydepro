@@ -1,0 +1,75 @@
+/* An open comparison grid: every service standard is visible without interaction. */
+#difference .comparison-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+#difference .comparison-card {
+  min-width: 0;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+#difference .comparison-pro {
+  padding: 22px 24px 20px;
+  color: var(--ink);
+  background: #fff;
+}
+#difference .comparison-card-meta {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+#difference .comparison-card-meta > span:first-child {
+  display: none;
+}
+#difference .comparison-card-meta > span:last-child {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+#difference .comparison-pro h3 { margin: 0 0 9px; color: var(--ink); font-size: 18px; font-weight: 700; line-height: 1.4; letter-spacing: -.02em; }
+#difference .comparison-pro p { color: var(--muted); font-size: var(--text-secondary); line-height: 1.65; }
+#difference .comparison-other {
+  margin: 0 12px 12px;
+  padding: 16px 12px;
+  min-height: 120px;
+  border-top: 1px solid var(--line);
+  border-radius: 0 0 8px 8px;
+  background: #fafafa;
+  transition: border-color .2s ease;
+}
+#difference .comparison-label { display: block; color: var(--muted); font-size: 9px; font-weight: 500; letter-spacing: .07em; text-transform: uppercase; margin-bottom: 7px; }
+#difference .comparison-other h4 { margin: 0 0 4px; color: var(--ink); font-size: 13px; font-weight: 500; line-height: 1.5; }
+#difference .comparison-other p { color: var(--muted); font-size: 12px; line-height: 1.65; }
+#difference .comparison-note { margin-top: 18px; color: var(--muted); font-size: var(--text-small); line-height: 1.7; }
+@media (hover: hover) {
+  #difference .comparison-card:hover { border-color: var(--gold); box-shadow: 0 6px 20px #8f6d300a; }
+  #difference .comparison-card:hover .comparison-other { border-top-color: var(--gold); }
+}
+@media (max-width: 1000px) {
+  #difference .comparison-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 700px) {
+  #difference .comparison-cards { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  #difference .comparison-pro { padding: 20px 20px 16px; }
+  #difference .comparison-card-meta { margin-bottom: 12px; }
+  #difference .comparison-card-meta > span:last-child { font-size: 10px; }
+  #difference .comparison-pro h3 { font-size: 17px; margin-bottom: 7px; }
+  #difference .comparison-other { min-height: 0; margin: 0 10px 10px; padding: 14px 10px; }
+  #difference .comparison-other h4 { font-size: 12px; }
+  #difference .comparison-note { margin-top: 16px; }
+}

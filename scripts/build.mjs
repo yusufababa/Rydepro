@@ -16,6 +16,7 @@ const files = [
   'src/polish.css',
   'src/typography.css',
   'src/landing.css',
+  'src/comparison.css',
   'src/driver/main.js',
   'src/driver/model.js',
   'src/driver/data.js',

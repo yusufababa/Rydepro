@@ -6,3 +6,4 @@ dist/
 .env
 .env.*
 .driver-qa/
+.landing-qa/

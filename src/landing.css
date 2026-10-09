@@ -1,0 +1,146 @@
+/* Compact, left-aligned demo layout. Scoped so the waitlist and driver stay unchanged. */
+#landing {
+  --text-base: 14px;
+  --text-secondary: 13px;
+  --text-small: 11px;
+  --text-micro: 10px;
+  --text-control: 13px;
+  --text-eyebrow: 10px;
+  --title-section: clamp(22px, 2vw, 26px);
+  --title-card: 19px;
+  --title-feature: 16px;
+  --title-fleet: 32px;
+  --landing-gutter: max(24px, calc((100% - 1160px) / 2));
+  font-size: var(--text-base);
+  line-height: 1.65;
+}
+#landing .section { padding: clamp(40px, 4.4vw, 64px) var(--landing-gutter); }
+#landing .center-heading, #landing .section-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  align-items: end;
+  gap: 6px 48px;
+  max-width: none;
+  margin: 0 0 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  text-align: left;
+}
+#landing .heading-title { min-width: 0; }
+#landing .heading-title > .eyebrow { display: block; margin-bottom: 6px; }
+#landing .center-heading h2, #landing .section-heading h2 {
+  margin: 0;
+  font-size: var(--title-section);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -.025em;
+}
+#landing .section-heading h2 { margin-top: 6px; }
+#landing .center-heading > p, #landing .section-heading > p {
+  margin: 0;
+  max-width: 510px;
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--muted);
+}
+#landing .hero-layout {
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  align-items: end;
+  gap: 56px;
+  padding: 56px var(--landing-gutter) 60px;
+}
+#landing .hero-heading h1 { font-size: clamp(30px, 3vw, 40px); line-height: 1.18; letter-spacing: -.035em; }
+#landing .hero-heading > .eyebrow { margin-bottom: 14px; }
+#landing .hero-description { font-size: 15px; line-height: 1.7; }
+#landing .hero-facts { margin: 20px 0; }
+#landing .hero-facts li { padding: 10px 0; font-size: 11px; }
+#landing .brand-principles { font-size: 11px; }
+#landing .brand-principles span { min-height: 44px; }
+#landing .app-strip { padding-inline: var(--landing-gutter); }
+#landing .app-strip h2 { font-size: 13px; }
+#landing .about-copy, #landing .section-note, #landing .pricing-anchor {
+  max-width: 800px;
+  margin: 18px 0 0;
+  text-align: left;
+}
+#landing .about-copy { font-size: 14px; line-height: 1.7; }
+#landing .pricing-anchor { font-size: 11px; }
+#landing .ride-options, #landing .steps, #landing .service-grid,
+#landing .feature-grid, #landing .reserve-grid, #landing .auction-grid,
+#landing .expansion-grid, #landing .fleet-tabs { margin-top: 0; }
+#landing .ride-card, #landing .service-grid article,
+#landing .feature-grid article, #landing .reserve-grid article,
+#landing .management-secondary article, #landing .business-grid article,
+#landing .early-access-card, #landing .tier-preview { padding: 24px; }
+#landing .ride-card h3 { margin-top: 12px; }
+#landing .pricing-list { margin-top: 18px; }
+#landing .pricing-list li { padding-block: 9px; font-size: 13px; }
+#landing .steps {
+  gap: 0;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+}
+#landing .steps article { padding: 24px 20px; border: 0; transition: background-color .2s ease; }
+#landing .steps article + article { border-left: 1px solid var(--line); }
+#landing .steps article:hover { background: var(--gold-soft); }
+#landing .steps h3 { margin: 0; }
+#landing .steps p { font-size: 13px; }
+#landing .service-grid, #landing .management-primary, #landing .business-grid { gap: 12px; }
+#landing .service-grid p { margin-bottom: 20px; }
+#landing .management-secondary { margin-top: 12px; gap: 12px; }
+#landing .management-secondary h3, #landing .reserve-grid h3 { font-size: 19px; }
+#landing .rewards-summary { display: grid; justify-content: start; gap: 0; margin-top: 20px; text-align: left; }
+#landing .rewards-summary li { max-width: none; padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 13px; }
+#landing .reserve > .text-link { margin: 18px 0 0; }
+#landing .business { display: block; }
+#landing .business-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+#landing .business-grid h3 { font-size: 16px; margin: 0 0 12px; }
+#landing .business-close { margin-top: 24px; padding-top: 20px; text-align: left; }
+#landing .business-action { margin-top: 20px; }
+#landing .trusted { text-align: left; }
+#landing .trusted > .center-heading { display: grid; max-width: none; }
+#landing .trusted > div:last-child { gap: 0; margin-top: 0; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+#landing .trusted > div:last-child > span { padding: 20px 12px; text-align: center; font-size: 13px; }
+#landing .trusted > div:last-child > span + span { border-left: 1px solid var(--line); }
+#landing .auction-grid { padding: 28px; gap: 40px; }
+#landing .auction-main h3 { margin-top: 0; }
+#landing .faq-list { max-width: none; margin: 0; }
+#landing .faq-list summary { padding-block: 18px; font-size: 14px; }
+#landing .faq-list summary::after { top: 21px; }
+#landing .faq-answer { font-size: 13px; }
+#landing .closing { text-align: left; }
+#landing .closing h2 { margin: 12px 0 16px; font-size: 30px; letter-spacing: -.03em; }
+#landing .closing p, #landing .closing-copy { max-width: 690px; margin-inline: 0; }
+#landing .closing-actions { justify-content: flex-start; margin-top: 24px; }
+#landing .wait-heading h4 { font-size: 20px; }
+#landing .wait-times dd { font-size: 26px; white-space: nowrap; }
+#landing .fleet-specs strong { font-size: 30px; }
+@media (max-width: 1050px) {
+  #landing .business-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  #landing .hero-layout { gap: 32px; }
+}
+@media (max-width: 700px) {
+  #landing { --text-base: 12px; --text-secondary: 12px; --text-control: 12px; --title-section: 22px; --title-card: 18px; --title-feature: 16px; --title-fleet: 28px; }
+  #landing .center-heading, #landing .section-heading, #landing .trusted > .center-heading { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  #landing .center-heading > p, #landing .section-heading > p, #landing .about-copy { font-size: 12px; }
+  #landing .hero-layout { grid-template-columns: minmax(0, 1fr); gap: 28px; padding-block: 40px; }
+  #landing .hero-heading h1 { font-size: 30px; }
+  #landing .hero-description { font-size: 13px; }
+  #landing .hero-facts li, #landing .brand-principles { font-size: 10px; }
+  #landing .ride-card, #landing .service-grid article, #landing .feature-grid article,
+  #landing .reserve-grid article, #landing .management-secondary article,
+  #landing .business-grid article, #landing .early-access-card, #landing .tier-preview { padding: 20px; }
+  #landing .pricing-list li, #landing .steps p, #landing .rewards-summary li, #landing .faq-answer { font-size: 12px; }
+  #landing .steps { grid-template-columns: minmax(0, 1fr); }
+  #landing .steps article { padding: 20px; }
+  #landing .steps article + article { border-left: 0; border-top: 1px solid var(--line); }
+  #landing .business-grid { grid-template-columns: minmax(0, 1fr); }
+  #landing .trusted > div:last-child > span { font-size: 12px; }
+  #landing .trusted > div:last-child > span:nth-child(3) { border-left: 0; }
+  #landing .trusted > div:last-child > span:nth-child(n+3) { border-top: 1px solid var(--line); }
+  #landing .auction-grid { padding: 20px; gap: 24px; }
+  #landing .faq-list summary { font-size: 13px; }
+  #landing .closing h2 { font-size: 26px; }
+  #landing .fleet-specs strong, #landing .wait-times dd { font-size: 24px; }
+}

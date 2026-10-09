@@ -15,6 +15,7 @@ const files = [
   'src/redesign.css',
   'src/polish.css',
   'src/typography.css',
+  'src/landing.css',
   'src/driver/main.js',
   'src/driver/model.js',
   'src/driver/data.js',

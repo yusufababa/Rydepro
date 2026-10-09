@@ -1,0 +1,40 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>
+*{box-sizing:border-box}body{margin:0;padding:26px;font:13px/1.6 Inter,Arial,sans-serif;color:#0b0d13;background:#fff}h1{font-size:25px;line-height:1.2;letter-spacing:-.6px;margin:12px 0}p{color:#666c75;margin:12px 0}.eyebrow{font-size:10px;letter-spacing:1.7px;color:#8f6d30;font-weight:700}.choose{border:1px solid #e2e4e8;border-radius:12px;padding:18px;margin:20px 0;background:#fafaf7}label{display:block;font-weight:600;margin-bottom:10px}input{font:inherit;max-width:100%}button{height:36px;padding:0 20px;border:1px solid #0b0d13;border-radius:999px;color:#fff;background:#0b0d13;font:600 13px Inter,Arial,sans-serif;cursor:pointer}button:hover{background:#c5a059;border-color:#c5a059;color:#0b0d13}button:disabled{opacity:.45;cursor:default}.row{display:flex;gap:8px;align-items:center}button.secondary{background:#fff;color:#0b0d13;border-color:#e2e4e8}#status{font-size:12px;white-space:pre-wrap;margin-top:16px}#files{font-size:12px;padding-left:17px;max-height:120px;overflow:auto}small{font-size:11px;color:#666c75}.warning{color:#8f6d30}
+</style></head><body>
+<span class="eyebrow">RYDEPRO · EDITABLE WEB DESIGN</span><h1>Bring the website<br>into Figma.</h1>
+<p>Import the measured landing, waitlist, and confirmation screens as native text, images, and nested Auto Layout frames.</p>
+<div class="choose"><label for="source">Select captured screen JSON files</label><input id="source" type="file" accept=".json,application/json" multiple><ul id="files"></ul><small>Use the six screen files in design/figma/source. Satoshi must be available in Figma.</small></div>
+<div class="row"><button id="import" disabled>Import designs</button><button class="secondary" id="close">Close</button></div>
+<p id="status" role="status">Choose the desktop and mobile screens you want to import.</p>
+<script>
+let snapshots = [];
+const status = document.getElementById('status');
+const button = document.getElementById('import');
+document.getElementById('source').addEventListener('change', async event => {
+  snapshots = []; button.disabled = true; document.getElementById('files').replaceChildren();
+  try {
+    for (const file of event.target.files) {
+      const snapshot = JSON.parse(await file.text());
+      if (!Array.isArray(snapshot.tree) || !snapshot.viewport) continue;
+      snapshots.push(snapshot);
+      const item = document.createElement('li'); item.textContent = `${snapshot.name} · ${snapshot.viewport.width}px`; document.getElementById('files').append(item);
+    }
+    snapshots.sort((a,b) => a.viewport.width - b.viewport.width || a.name.localeCompare(b.name));
+    button.disabled = !snapshots.length;
+    status.textContent = snapshots.length ? `${snapshots.length} screens ready. Existing imported screens will be kept.` : 'No screen snapshots found. Choose the landing, waitlist, or confirmation JSON files.';
+  } catch (error) { status.textContent = `Could not read a snapshot: ${error.message}`; }
+});
+button.addEventListener('click', () => { button.disabled = true; document.getElementById('source').disabled = true; parent.postMessage({ pluginMessage: { type: 'import', snapshots } }, '*'); });
+document.getElementById('close').addEventListener('click', () => parent.postMessage({ pluginMessage: { type: 'close' } }, '*'));
+window.onmessage = event => {
+  const message = event.data.pluginMessage;
+  if (!message) return;
+  if (message.type === 'progress') status.textContent = `Importing ${message.name} (${message.current} of ${message.total})…`;
+  if (message.type === 'complete' || message.type === 'error') {
+    button.disabled = !snapshots.length; document.getElementById('source').disabled = false;
+    const warnings = (message.results || []).flatMap(result => result.warnings || []);
+    status.textContent = message.type === 'error' ? message.message : `${message.results.length} screens imported. Review spacing and line breaks against the reference screenshots.${warnings.length ? '\n\n' + [...new Set(warnings)].slice(0,5).join('\n') : ''}`;
+  }
+};
+</script></body></html>

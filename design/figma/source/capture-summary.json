@@ -1,0 +1,96 @@
+{
+  "capturedAt": "2026-10-09T11:13:26.541Z",
+  "captures": [
+    {
+      "name": "landing-desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "pageHeight": 9140,
+      "screenshotHeight": 9140,
+      "elements": 511,
+      "text": 319,
+      "images": 3,
+      "svg": 2,
+      "assets": 2,
+      "backdrop": false
+    },
+    {
+      "name": "waitlist-desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "pageHeight": 1534,
+      "screenshotHeight": 1534,
+      "elements": 112,
+      "text": 74,
+      "images": 2,
+      "svg": 0,
+      "assets": 1,
+      "backdrop": false
+    },
+    {
+      "name": "confirmation-desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "pageHeight": 1534,
+      "screenshotHeight": 1000,
+      "elements": 128,
+      "text": 87,
+      "images": 3,
+      "svg": 0,
+      "assets": 1,
+      "backdrop": true
+    },
+    {
+      "name": "landing-mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "pageHeight": 13473,
+      "screenshotHeight": 13473,
+      "elements": 504,
+      "text": 313,
+      "images": 3,
+      "svg": 2,
+      "assets": 2,
+      "backdrop": false
+    },
+    {
+      "name": "waitlist-mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "pageHeight": 2265,
+      "screenshotHeight": 2265,
+      "elements": 96,
+      "text": 63,
+      "images": 2,
+      "svg": 0,
+      "assets": 1,
+      "backdrop": false
+    },
+    {
+      "name": "confirmation-mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "pageHeight": 2265,
+      "screenshotHeight": 844,
+      "elements": 112,
+      "text": 76,
+      "images": 3,
+      "svg": 0,
+      "assets": 1,
+      "backdrop": true
+    }
+  ],
+  "errors": []
+}

@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/src/redesign.css" />
     <link rel="stylesheet" href="/src/polish.css" />
     <link rel="stylesheet" href="/src/typography.css" />
+    <link rel="stylesheet" href="/src/landing.css" />
     <link rel="preload" href="/assets/fonts/satoshi-regular.woff2" as="font" type="font/woff2" crossorigin />
     <script type="module" src="/src/main.js"></script>
   </head>
@@ -50,8 +51,8 @@
 
       <section class="pricing-section section" id="pricing">
         <div class="center-heading">
-          <span class="eyebrow gold">PRICING · FIXED OR AUCTION</span>
-          <h2>Two pricing options.<br>One more flexible approach.</h2>
+          <div class="heading-title"><span class="eyebrow gold">PRICING · FIXED OR AUCTION</span>
+          <h2>Two pricing options. One more flexible approach.</h2></div>
           <p>Your organization chooses the model that fits each trip — or lets riders pick.</p>
         </div>
         <div class="ride-options">
@@ -86,8 +87,8 @@
 
       <section class="about section" id="experience">
         <div class="center-heading">
-          <span class="eyebrow gold">THE PLATFORM</span>
-          <h2>What is RYDEPRO?</h2>
+          <div class="heading-title"><span class="eyebrow gold">THE PLATFORM</span>
+          <h2>What is RYDEPRO?</h2></div>
           <p>RYDEPRO is a premium transportation network connecting travelers with vetted, professional chauffeurs.</p>
         </div>
         <p class="about-copy">We manage scheduling, dispatch, and quality assurance — delivering reliable, white-glove service on every trip.</p>
@@ -96,7 +97,7 @@
 
 
       <section class="journey section" id="how-it-works">
-        <div class="center-heading"><span class="eyebrow gold">THE JOURNEY</span><h2>From reservation to arrival</h2><p>Every step of your journey, handled with precision.</p></div>
+        <div class="center-heading"><div class="heading-title"><span class="eyebrow gold">THE JOURNEY</span><h2>From reservation to arrival</h2></div><p>Every step of your journey, handled with precision.</p></div>
         <div class="steps">
           <article><h3>Reserve</h3><p>Book online, via app, or through your business portal.</p></article>
           <article><h3>Confirm</h3><p>Receive driver details, vehicle info, and exact pickup time.</p></article>
@@ -108,7 +109,7 @@
       </section>
 
       <section class="services section" id="services">
-        <div class="center-heading"><span class="eyebrow gold">COVERAGE</span><h2>Rides for every occasion</h2><p>Pre-booked, scheduled, and on-demand transportation across business and personal travel.</p></div>
+        <div class="center-heading"><div class="heading-title"><span class="eyebrow gold">COVERAGE</span><h2>Rides for every occasion</h2></div><p>Pre-booked, scheduled, and on-demand transportation across business and personal travel.</p></div>
         <div class="service-grid">
           <article><span class="eyebrow gold">EVERYDAY</span><h3>Scheduled transportation</h3><p>Pre-booked rides for daily commutes, meetings, and personal travel.</p><button class="text-button" data-waitlist>Book a Ride</button></article>
           <article><span class="eyebrow gold">AIRPORT</span><h3>Airport transfers</h3><p>Flight-tracked airport transfers with professional meet-and-greet service.</p><button class="text-button" data-waitlist>Book Airport Ride</button></article>
@@ -125,10 +126,10 @@
           <button role="tab" id="tab-luxury" aria-selected="false" aria-controls="fleet-panel" tabindex="-1" data-fleet="luxury">Luxury</button>
           <button role="tab" id="tab-commercial" aria-selected="false" aria-controls="fleet-panel" tabindex="-1" data-fleet="commercial">Commercial Buses</button>
         </div>
+        <div id="fleet-options" class="fleet-options" role="group" aria-label="Vehicle type"><button type="button" class="fleet-option" data-vehicle-index="0" aria-pressed="true">Sedan</button><button type="button" class="fleet-option" data-vehicle-index="1" aria-pressed="false">E-Sedan</button><button type="button" class="fleet-option" data-vehicle-index="2" aria-pressed="false">Minivan</button></div>
         <p class="sr-only" id="fleet-announcement" role="status" aria-live="polite"></p>
         <div class="fleet-panel" id="fleet-panel" role="tabpanel" aria-labelledby="tab-premium">
-          <figure class="fleet-visual"><img id="fleet-image" src="/assets/fleet/premium.webp" alt="Illustrative black premium sedan" width="960" height="600" loading="lazy" decoding="async"><figcaption>Vehicle illustration. Availability varies by market.</figcaption></figure>
-          <div class="fleet-copy"><span class="eyebrow gold" id="fleet-subtitle">THE EVERYDAY, UPGRADED</span><h3 id="fleet-title">Premium Sedan</h3><p id="fleet-description">A refined ride for airport transfers, everyday travel, and everything in between.</p><div id="fleet-options" class="fleet-options" aria-label="Vehicles in this class"></div><button class="button button-dark" data-waitlist>Reserve this class</button></div>
+          <div class="fleet-copy"><span class="eyebrow gold" id="fleet-subtitle">THE EVERYDAY, UPGRADED</span><h3 id="fleet-title">Premium Sedan</h3><p id="fleet-description">A refined ride for airport transfers, everyday travel, and everything in between.</p><button class="button button-dark" data-waitlist>Reserve this class</button></div>
           <div class="fleet-specs"><div><span class="spec-label">PASSENGERS</span><strong id="fleet-passengers">3</strong></div><div><span class="spec-label">LUGGAGE</span><strong id="fleet-luggage">Varies</strong></div><div class="fleet-details"><span>Professional drivers</span><span>Clean, inspected vehicles</span><span>Comfort at every mile</span></div></div>
           <aside class="fleet-wait" aria-labelledby="free-wait-title"><div class="wait-heading"><span class="eyebrow gold">A LITTLE TIME, ON US</span><h4 id="free-wait-title">Free waiting time</h4><p>Room to arrive. Time to settle in.</p></div><dl class="wait-times"><div><dt>Point-to-point</dt><dd>10 <span>min</span></dd></div><div><dt>Airport transfers</dt><dd>60 <span>min</span></dd></div><div><dt>Cruise transfers</dt><dd>60 <span>min</span></dd></div><div><dt>Hourly bookings</dt><dd>5 <span>min</span></dd></div></dl></aside>
           <div class="fleet-assurance"><span>PROFESSIONAL DRIVERS</span><span>INSPECTED VEHICLES</span><span>COMFORT AS STANDARD</span></div>
@@ -136,7 +137,7 @@
       </section>
 
       <section class="platform section" id="platform">
-        <div class="center-heading"><span class="eyebrow gold">TRIP MANAGEMENT</span><h2>Plan and manage every detail</h2><p>Customize every aspect of your trip through a single, intuitive platform.</p></div>
+        <div class="center-heading"><div class="heading-title"><span class="eyebrow gold">TRIP MANAGEMENT</span><h2>Plan and manage every detail</h2></div><p>Customize every aspect of your trip through a single, intuitive platform.</p></div>
         <div class="feature-grid management-primary">
           <article><h3>Personalized travel options</h3><p>Request child seats, meet-and-greet, luggage assistance, and onboard amenities.</p></article>
           <article><h3>Intelligent trip management</h3><p>Smart scheduling and live monitoring for exact pickup timing and route optimization.</p></article>
@@ -151,7 +152,7 @@
       </section>
 
       <section class="reserve section" id="reserve">
-        <div class="center-heading"><span class="eyebrow gold">MEMBERSHIP</span><h2>Member benefits</h2><p>Priority access, loyalty rewards, and referral perks for frequent travelers.</p></div>
+        <div class="center-heading"><div class="heading-title"><span class="eyebrow gold">MEMBERSHIP</span><h2>Member benefits</h2></div><p>Priority access, loyalty rewards, and referral perks for frequent travelers.</p></div>
         <div class="reserve-grid">
           <article><h3>Priority access</h3><p>Skip the queue with faster dispatch, preferred vehicles, and dedicated support.</p></article>
           <article><h3>Loyalty rewards</h3><p>Earn credits and unlock tiered discounts the more you ride.</p></article>
@@ -162,7 +163,7 @@
       </section>
 
       <section class="business section" id="business">
-        <div class="business-intro"><span class="eyebrow gold">ENTERPRISE</span><h2>Built for<br>business.</h2><p>A transportation partner designed for reliability, compliance, and scale.</p><button class="button button-dark" data-waitlist>Partner With Us</button></div>
+        <div class="center-heading"><div class="heading-title"><span class="eyebrow gold">ENTERPRISE</span><h2>Built for business.</h2></div><p>A transportation partner designed for reliability, compliance, and scale.</p></div>
         <div class="business-grid">
           <article><h3>Uniform service delivery</h3><p>The same quality and service level, in every city we serve.</p></article>
           <article><h3>Corporate &amp; airport expertise</h3><p>Corporate billing, flight monitoring, and executive-ready vehicles at commercial and private terminals.</p></article>
@@ -170,10 +171,11 @@
           <article><h3>Scheduled &amp; on-demand travel</h3><p>Reserve weeks ahead or request on-demand — built for how business actually moves.</p></article>
         </div>
         <p class="business-close">One program for corporate mobility, executive travel, airport operations, and event logistics — under one account.</p>
+        <button class="button button-dark business-action" data-waitlist>Partner With Us</button>
       </section>
 
       <section class="difference section" id="difference">
-        <div class="center-heading"><span class="eyebrow gold">COMPARISON</span><h2>The difference is in the details</h2><p>How RYDEPRO compares to traditional chauffeur, black car, limo, and rideshare services.</p></div>
+        <div class="center-heading"><div class="heading-title"><span class="eyebrow gold">COMPARISON</span><h2>The difference is in the details</h2></div><p>How RYDEPRO compares to traditional chauffeur, black car, limo, and rideshare services.</p></div>
         <div class="comparison-wrap">
           <table>
             <caption class="sr-only">RYDEPRO service standards compared with typical rideshare options. Other providers' features vary by market and service.</caption>
@@ -194,12 +196,12 @@
       </section>
 
       <section class="trusted section" id="trusted">
-        <div class="center-heading"><span class="eyebrow gold">TRUSTED BY</span><h2>Transportation professionals worldwide</h2><p>Enterprise travel, corporate mobility, airport services, and event transportation.</p></div>
+        <div class="center-heading"><div class="heading-title"><span class="eyebrow gold">TRUSTED BY</span><h2>Transportation professionals worldwide</h2></div><p>Enterprise travel, corporate mobility, airport services, and event transportation.</p></div>
         <div><span>Enterprise Travel</span><span>Corporate Mobility</span><span>Airport Services</span><span>Event Transportation</span></div>
       </section>
 
       <section class="auction-section section" id="ondemand">
-        <div class="center-heading"><span class="eyebrow gold">ON-DEMAND</span><h2>On-demand ride auction.<br>Coming worldwide.</h2><p>Set your maximum and let the marketplace work toward a match. Rolling out globally after our U.S., Europe, and Canada launch.</p></div>
+        <div class="center-heading"><div class="heading-title"><span class="eyebrow gold">ON-DEMAND</span><h2>On-demand ride auction.<br>Coming worldwide.</h2></div><p>Set your maximum and let the marketplace work toward a match. Rolling out globally after our U.S., Europe, and Canada launch.</p></div>
         <div class="auction-grid">
           <article class="auction-main"><h3>Your maximum. Your choice — on demand.</h3><p>Today, RYDEPRO supports scheduled and reserved travel across our launch markets. The on-demand ride auction extends that model to immediate trips: riders set a maximum fare, and the marketplace works toward a match below that ceiling.</p><p>No surge. No hidden ceiling. Transparent pricing on every request — whether you book weeks ahead or the moment you need a ride.</p><button class="button button-dark" data-waitlist>Be First to Know</button></article>
           <aside class="auction-facts" aria-label="On-demand launch details"><span class="status-badge">Coming soon</span><dl><div><dt>Launch markets</dt><dd>U.S. · Europe · Canada</dd></div><div><dt>Global rollout</dt><dd>Worldwide</dd></div><div><dt>Pricing model</dt><dd>Auction</dd></div><div><dt>Rider control</dt><dd>Set max fare</dd></div><div><dt>Surge pricing</dt><dd>Never</dd></div></dl></aside>
@@ -207,7 +209,7 @@
       </section>
 
       <section class="expansion-section section" id="expansion">
-        <div class="center-heading"><span class="eyebrow gold">EARLY ACCESS</span><h2>Launching in U.S., Europe,<br>and Canada markets</h2><p>Join the waitlist to be notified when RYDEPRO launches in your market — including on-demand ride auction dates.</p></div>
+        <div class="center-heading"><div class="heading-title"><span class="eyebrow gold">EARLY ACCESS</span><h2>Launching in U.S., Europe,<br>and Canada markets</h2></div><p>Join the waitlist to be notified when RYDEPRO launches in your market — including on-demand ride auction dates.</p></div>
         <div class="expansion-grid">
           <article class="early-access-card"><span class="eyebrow gold">WAITLIST</span><h3>Get notified when RYDEPRO launches in your city</h3><p>We'll send service updates, expansion announcements, and early access to new markets.</p><button class="button button-dark" data-waitlist>Join the Waitlist</button><p class="early-access-note">We'll notify you the moment your market goes live.</p></article>
           <article class="tier-preview"><span class="eyebrow gold">MEMBERSHIP PREVIEW</span><h3>Tier progression at a glance</h3><p>Frequent travelers unlock higher tiers as their trip volume grows. Credits and benefits scale with usage.</p><dl class="tier-list"><div><dt>Tier 1–3 · Entry</dt><dd>Base credits</dd></div><div><dt>Tier 4–7 · Elevated</dt><dd>Higher multiplier</dd></div><div><dt>Tier 8–10 · Top</dt><dd>Max multiplier</dd></div></dl></article>
@@ -215,7 +217,7 @@
       </section>
 
       <section class="faq-section section" id="faq">
-        <div class="center-heading"><span class="eyebrow gold">DETAILS</span><h2>Frequently asked questions</h2><p>Service standards, pricing, airport procedures, and business accounts.</p></div>
+        <div class="center-heading"><div class="heading-title"><span class="eyebrow gold">DETAILS</span><h2>Frequently asked questions</h2></div><p>Service standards, pricing, airport procedures, and business accounts.</p></div>
         <div class="faq-list">
           <details><summary>How do airport transfers work?</summary><div class="faq-answer"><p>We monitor your flight in real time and adjust pickup automatically. Domestic and international airport pickups include 60 minutes of free waiting time, with meet-and-greet available on request.</p></div></details>
           <details><summary>Can I schedule a ride weeks in advance?</summary><div class="faq-answer"><p>Yes. RYDEPRO supports scheduled bookings weeks ahead as well as same-day requests. Recurring and hourly reservations are available for both personal and business travel.</p></div></details>
